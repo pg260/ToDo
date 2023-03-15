@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "XRZj2xZWh6mmrkMujcpffenp531T/NwIGCxGJklfP73nVo/iLwevWvQsS8AvCp5kznCJ+jawh5kV2mYenc1V9A==",
+  "dgSpecHash": "WjO5GX1ymfVh56bKzF7J7dnbB0mRF/jipoGphIsATd9sPpIJiqhf+y+594h0jbo7HD8rDO/t1TJ+3JEqrwb6lw==",
   "success": true,
-  "projectFilePath": "/home/pg/Área de Trabalho/ToDo/src/Manager.Infra/Manager.Infra.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/Manager.Infra.csproj",
+  "expectedPackageFiles": [
+    "/home/pg/.nuget/packages/fluentvalidation/11.5.1/fluentvalidation.11.5.1.nupkg.sha512",
+    "/home/pg/.nuget/packages/microsoft.entityframeworkcore/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/home/pg/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/home/pg/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.0-preview.2.23128.3/microsoft.entityframeworkcore.analyzers.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/home/pg/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.caching.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/home/pg/.nuget/packages/microsoft.extensions.caching.memory/8.0.0-preview.2.23128.3/microsoft.extensions.caching.memory.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/home/pg/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0-preview.2.23128.3/microsoft.extensions.dependencyinjection.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/home/pg/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.dependencyinjection.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/home/pg/.nuget/packages/microsoft.extensions.logging/8.0.0-preview.2.23128.3/microsoft.extensions.logging.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/home/pg/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0-preview.2.23128.3/microsoft.extensions.logging.abstractions.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/home/pg/.nuget/packages/microsoft.extensions.options/8.0.0-preview.2.23128.3/microsoft.extensions.options.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/home/pg/.nuget/packages/microsoft.extensions.primitives/8.0.0-preview.2.23128.3/microsoft.extensions.primitives.8.0.0-preview.2.23128.3.nupkg.sha512",
+    "/home/pg/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

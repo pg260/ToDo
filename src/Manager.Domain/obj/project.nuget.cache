@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kUAutROHB+eY+NGv4yF0Ejbfb8eDs6vKdRjVDLDk/QpB+T0NIXFSp3+IRuJ24dG3wM+pNDRLqe0pf39+ZRDuPg==",
+  "dgSpecHash": "y6e6fMytNVRUFvNki19T0GyYXZeqz2f1gjwE+xoFI97NuHynKVZOV1p2/KSJJKdqrbLHMkHlvVIstFgvIDg7mA==",
   "success": true,
-  "projectFilePath": "/home/pg/Área de Trabalho/ToDo/src/Manager.Domain/Manager.Domain.csproj",
+  "projectFilePath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/Manager.Domain.csproj",
   "expectedPackageFiles": [
     "/home/pg/.nuget/packages/fluentvalidation/11.5.1/fluentvalidation.11.5.1.nupkg.sha512"
   ],

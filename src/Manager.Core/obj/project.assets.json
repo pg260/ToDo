@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/pg/Área de Trabalho/ToDo/src/Manager.Core/Manager.Core.csproj",
+      "projectUniqueName": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/Manager.Core.csproj",
       "projectName": "Manager.Core",
-      "projectPath": "/home/pg/Área de Trabalho/ToDo/src/Manager.Core/Manager.Core.csproj",
+      "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/Manager.Core.csproj",
       "packagesPath": "/home/pg/.nuget/packages/",
-      "outputPath": "/home/pg/Área de Trabalho/ToDo/src/Manager.Core/obj/",
+      "outputPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/pg/.nuget/NuGet/NuGet.Config"

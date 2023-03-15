@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/pg/Área de Trabalho/ToDo/src/Manager.Domain/Manager.Domain.csproj": {}
+    "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/Manager.Domain.csproj": {}
   },
   "projects": {
-    "/home/pg/Área de Trabalho/ToDo/src/Manager.Domain/Manager.Domain.csproj": {
+    "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/Manager.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/pg/Área de Trabalho/ToDo/src/Manager.Domain/Manager.Domain.csproj",
+        "projectUniqueName": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/Manager.Domain.csproj",
         "projectName": "Manager.Domain",
-        "projectPath": "/home/pg/Área de Trabalho/ToDo/src/Manager.Domain/Manager.Domain.csproj",
+        "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/Manager.Domain.csproj",
         "packagesPath": "/home/pg/.nuget/packages/",
-        "outputPath": "/home/pg/Área de Trabalho/ToDo/src/Manager.Domain/obj/",
+        "outputPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/pg/.nuget/NuGet/NuGet.Config"

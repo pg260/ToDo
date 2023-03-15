@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zXqQnYC2w5e42QTRWnC1PuFN3b8NaFCqm0SRq0IFhmvOrHA6FKCSiBiGQVgxH8qBiMZTF0GF6tHZFi0OYmV1PQ==",
+  "dgSpecHash": "DlbGHsy3KILaAsWuIDgRcFOqGfoiBSHmpZ/5m2YshQiE8sitArRK9Miw00YljUDdNxdd+CfPtkAXExqln3xBYQ==",
   "success": true,
-  "projectFilePath": "/home/pg/Área de Trabalho/ToDo/src/Manager.Services/Manager.Services.csproj",
+  "projectFilePath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Services/Manager.Services.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

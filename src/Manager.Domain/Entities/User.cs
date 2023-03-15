@@ -15,9 +15,9 @@ public class User : Base
     }
 
     //Propriedades dos usuários
-    public string? Name { get; set; }
-    public string? Email { get; set; }
-    public string? Password { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
 
     
     //Funções que afetam a classe Users

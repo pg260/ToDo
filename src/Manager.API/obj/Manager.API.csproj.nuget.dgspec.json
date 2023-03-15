@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/pg/Área de Trabalho/ToDo/src/Manager.API/Manager.API.csproj": {}
+    "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.API/Manager.API.csproj": {}
   },
   "projects": {
-    "/home/pg/Área de Trabalho/ToDo/src/Manager.API/Manager.API.csproj": {
+    "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.API/Manager.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/pg/Área de Trabalho/ToDo/src/Manager.API/Manager.API.csproj",
+        "projectUniqueName": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.API/Manager.API.csproj",
         "projectName": "Manager.API",
-        "projectPath": "/home/pg/Área de Trabalho/ToDo/src/Manager.API/Manager.API.csproj",
+        "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.API/Manager.API.csproj",
         "packagesPath": "/home/pg/.nuget/packages/",
-        "outputPath": "/home/pg/Área de Trabalho/ToDo/src/Manager.API/obj/",
+        "outputPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/pg/.nuget/NuGet/NuGet.Config"
