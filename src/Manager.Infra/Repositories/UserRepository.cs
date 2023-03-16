@@ -18,16 +18,22 @@ public class UserRepository : BaseRepository<User>, IUserRepository
     {
         return await _context.Users
             .AsNoTracking()
-            .FirstOrDefaultAsync();
+            .FirstOrDefaultAsync(x => x.Email.ToLower() == email.ToLower());
     }
 
-    public Task<List<User>> SearchByEmail(string email)
+    public async Task<List<User>> SearchByEmail(string email)
     {
-        throw new NotImplementedException();
+        return await _context.Users
+            .Where(x => x.Email.ToLower().Contains(email.ToLower()))
+            .AsNoTracking()
+            .ToListAsync();
     }
 
-    public Task<List<User>> SearchByName(string name)
+    public async Task<List<User>> SearchByName(string name)
     {
-        throw new NotImplementedException();
+        return await _context.Users
+            .Where(x => x.Name.ToLower().Contains(name.ToLower()))
+            .AsNoTracking()
+            .ToListAsync();
     }
 }

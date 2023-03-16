@@ -4,20 +4,28 @@ namespace Manager.Domain.Entities;
 
 public class Task : Base
 {
-    public Task(string description, Guid userId, bool concluded, DateTime concludedAt, DateTime deadline)
+    public Task(DateTime updatedAt, DateTime createdAt, string name, string description, Guid userId, bool concluded, DateTime concludedAt, DateTime deadline)
     {
+        Name = name;
         Description = description;
         UserId = userId;
         Concluded = concluded;
         ConcludedAt = concludedAt;
         Deadline = deadline;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
     }
 
-    public string Description { get; set; }
+    public string Name { get; set; }
+    public string? Description { get; set; }
     public Guid UserId { get; set; }
     public bool Concluded { get; set; }
-    public DateTime ConcludedAt { get; set; }
-    public DateTime Deadline { get; set; }
+    public DateTime? ConcludedAt { get; set; }
+    public DateTime? Deadline { get; set; }
+    public DateTime CreatedAt { get; set; }
+    
+    public DateTime? UpdatedAt { get; set; }
+    
     
     
     public override bool Validate()

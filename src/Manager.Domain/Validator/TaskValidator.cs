@@ -1,4 +1,5 @@
 
+using System.Data;
 using FluentValidation;
 using Task = Manager.Domain.Entities.Task;
 
@@ -22,8 +23,8 @@ public class TaskValidator : AbstractValidator<Task>
             .NotEmpty()
             .WithMessage("A descrição não pode ser vazia")
 
-            .MaximumLength(150)
-            .WithMessage("A descrição deve conter no máximo 150 caracteres");
+            .MaximumLength(200)
+            .WithMessage("A descrição deve conter no máximo 200 caracteres");
 
         RuleFor(x => x.UserId)
             .NotNull()
@@ -31,5 +32,15 @@ public class TaskValidator : AbstractValidator<Task>
 
             .NotEmpty()
             .WithMessage("O id de usuário não pode ser vazio");
+        RuleFor(x => x.Name)
+            .NotNull()
+            .WithMessage("O nome não pode ser nulo")
+
+            .NotEmpty()
+            .WithMessage("O nome não pode ser vazio")
+
+            .MaximumLength(50)
+            .WithMessage("O nome não pode passar de 50 caracteres");
     }
+    
 }
