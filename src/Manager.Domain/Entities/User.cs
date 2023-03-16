@@ -4,10 +4,9 @@ namespace Manager.Domain.Entities;
 
 public class User : Base
 {
-    protected User(){}
-    
-    public User(string name, string email, string password)
+    public User(Guid id, string name, string email, string password)
     {
+        Id = id;
         Name = name;
         Email = email;
         Password = password;

@@ -14,7 +14,7 @@ public class UserRepository : BaseRepository<User>, IUserRepository
 
     private readonly ManagerContext _context;
     
-    public async Task<User> GetByEmail(string email)
+    public async Task<User?> GetByEmail(string email)
     {
         return await _context.Users
             .AsNoTracking()
