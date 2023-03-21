@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EfCoreDialogsState">
+    <option name="keyValueStorage">
+      <map>
+        <entry key="Common:2c8cf0ee-7b53-d22b-f44a-fb88d4905ae8:dbContext" value="Manager.Infra.Context.ManagerContext" />
+        <entry key="Common:noBuild" value="true" />
+      </map>
+    </option>
+  </component>
+</project>

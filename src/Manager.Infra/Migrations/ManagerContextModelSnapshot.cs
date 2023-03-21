@@ -33,7 +33,7 @@ namespace Manager.Infra.Migrations
                         .HasColumnType("TINYINT(1)")
                         .HasColumnName("concluded");
 
-                    b.Property<DateTime>("ConcludedAt")
+                    b.Property<DateTime?>("ConcludedAt")
                         .HasColumnType("DATETIME")
                         .HasColumnName("concludedAt");
 
@@ -41,11 +41,10 @@ namespace Manager.Infra.Migrations
                         .HasColumnType("DATETIME")
                         .HasColumnName("createdAt");
 
-                    b.Property<DateTime>("Deadline")
+                    b.Property<DateTime?>("Deadline")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("VARCHAR(200)")
                         .HasColumnName("description");
@@ -56,7 +55,7 @@ namespace Manager.Infra.Migrations
                         .HasColumnType("VARCHAR(50)")
                         .HasColumnName("Name");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("DATETIME")
                         .HasColumnName("updatedAt");
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "y6e6fMytNVRUFvNki19T0GyYXZeqz2f1gjwE+xoFI97NuHynKVZOV1p2/KSJJKdqrbLHMkHlvVIstFgvIDg7mA==",
+  "dgSpecHash": "sGszzzbrBAZIJqmzgvxbjvLX7pG3znOTcM4RoDgFBBPLJr5T/eu5Xfc8gYCP5yy2A6OlrujAqx/YWM2NlpNh3Q==",
   "success": true,
   "projectFilePath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/Manager.Domain.csproj",
   "expectedPackageFiles": [

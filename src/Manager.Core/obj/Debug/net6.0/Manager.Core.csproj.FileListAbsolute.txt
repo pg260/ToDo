@@ -1,0 +1,12 @@
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/bin/Debug/net6.0/Manager.Core.deps.json
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/bin/Debug/net6.0/Manager.Core.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/bin/Debug/net6.0/ref/Manager.Core.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/bin/Debug/net6.0/Manager.Core.pdb
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/obj/Debug/net6.0/Manager.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/obj/Debug/net6.0/Manager.Core.AssemblyInfoInputs.cache
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/obj/Debug/net6.0/Manager.Core.AssemblyInfo.cs
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/obj/Debug/net6.0/Manager.Core.csproj.CoreCompileInputs.cache
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/obj/Debug/net6.0/Manager.Core.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/obj/Debug/net6.0/ref/Manager.Core.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/obj/Debug/net6.0/Manager.Core.pdb
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/obj/Debug/net6.0/Manager.Core.csproj.AssemblyReference.cache

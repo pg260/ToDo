@@ -1,10 +1,15 @@
+using Manager.Core.Exceptions;
 using Manager.Domain.Validator;
 
 namespace Manager.Domain.Entities;
 
 public class Task : Base
 {
-    public Task(DateTime updatedAt, DateTime createdAt, string name, string description, Guid userId, bool concluded, DateTime concludedAt, DateTime deadline)
+    public Task()
+    {
+        
+    }
+    public Task(DateTime? updatedAt, string name, string description, Guid userId, bool concluded, DateTime? concludedAt, DateTime? deadline)
     {
         Name = name;
         Description = description;
@@ -12,8 +17,9 @@ public class Task : Base
         Concluded = concluded;
         ConcludedAt = concludedAt;
         Deadline = deadline;
-        CreatedAt = createdAt;
+        CreatedAt = DateTime.UtcNow;
         UpdatedAt = updatedAt;
+        _errors = new List<string>();
     }
 
     public string Name { get; set; }
@@ -22,11 +28,25 @@ public class Task : Base
     public bool Concluded { get; set; }
     public DateTime? ConcludedAt { get; set; }
     public DateTime? Deadline { get; set; }
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get;}
     
     public DateTime? UpdatedAt { get; set; }
     
-    
+    public void ChangeName(string name)
+    {
+        Name = name;
+        Validate();
+    }
+    public void ChangeStatus(bool status)
+    {
+        Concluded = status;
+        Validate();
+    }
+    public void ChangeDesc(string desc)
+    {
+        Description = desc;
+        Validate();
+    }
     
     public override bool Validate()
     {
@@ -39,7 +59,7 @@ public class Task : Base
             {
                 _errors?.Add((error.ErrorMessage));
             }
-            throw new Exception($"Alguns campos estão inválidos {_errors?[0]}");
+            throw new DomainExceptions($"Alguns campos estão inválidos {_errors?[0]}");
         }
 
         return true;

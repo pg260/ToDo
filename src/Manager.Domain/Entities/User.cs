@@ -1,3 +1,4 @@
+using Manager.Core.Exceptions;
 using Manager.Domain.Validator;
 
 namespace Manager.Domain.Entities;
@@ -6,7 +7,7 @@ public class User : Base
 {
     public User(Guid id, string name, string email, string password)
     {
-        Id = id;
+        Id = Guid.NewGuid();
         Name = name;
         Email = email;
         Password = password;
@@ -53,7 +54,7 @@ public class User : Base
             {
                 _errors?.Add((error.ErrorMessage));
             }
-            throw new Exception($"Alguns campos estão inválidos {_errors?[0]}");
+            throw new DomainExceptions($"Alguns campos estão inválidos {_errors?[0]}");
         }
 
         return true;

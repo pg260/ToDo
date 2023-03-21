@@ -14,6 +14,16 @@
             "related": ".xml"
           }
         }
+      },
+      "Manager.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Manager.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Manager.Core.dll": {}
+        }
       }
     }
   },
@@ -40,11 +50,17 @@
         "lib/netstandard2.1/FluentValidation.dll",
         "lib/netstandard2.1/FluentValidation.xml"
       ]
+    },
+    "Manager.Core/1.0.0": {
+      "type": "project",
+      "path": "../Manager.Core/Manager.Core.csproj",
+      "msbuildProject": "../Manager.Core/Manager.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "FluentValidation >= 11.5.1"
+      "FluentValidation >= 11.5.1",
+      "Manager.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -71,7 +87,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/Manager.Core.csproj": {
+              "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/Manager.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

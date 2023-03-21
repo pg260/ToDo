@@ -13,7 +13,12 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
     }
 
     private readonly ManagerContext _context;
-    
+
+    public async Task<Task> Get(string name)
+    {
+        return await _context.Set<Task>().FindAsync(name);
+    }
+
     public async Task<List<Task>> SearchByName(string name)
     {
         return await _context.Tasks

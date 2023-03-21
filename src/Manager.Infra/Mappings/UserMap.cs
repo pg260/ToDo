@@ -6,8 +6,6 @@ namespace Manager.Infra.Mappings;
 
 public class UserMap : IEntityTypeConfiguration<User>
 {
-    private IEntityTypeConfiguration<User> _entityTypeConfigurationImplementation;
-    
     public void Configure(EntityTypeBuilder<User> builder)
     {
         builder.ToTable("User");
@@ -15,7 +13,6 @@ public class UserMap : IEntityTypeConfiguration<User>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id)
-            .IsRequired()
             .HasColumnName("Id")
             .HasColumnType("VARCHAR(36)");
 

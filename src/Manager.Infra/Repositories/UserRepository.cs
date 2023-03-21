@@ -1,3 +1,4 @@
+using Manager.Core.Exceptions;
 using Manager.Domain.Entities;
 using Manager.Infra.Context;
 using Manager.Infra.Interfaces;
@@ -13,7 +14,7 @@ public class UserRepository : BaseRepository<User>, IUserRepository
     }
 
     private readonly ManagerContext _context;
-    
+
     public async Task<User?> GetByEmail(string email)
     {
         return await _context.Users

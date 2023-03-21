@@ -6,8 +6,6 @@ namespace Manager.Infra.Mappings;
 
 public class TasksMap : IEntityTypeConfiguration<Task>
 {
-    private IEntityTypeConfiguration<Task> _entityTypeConfiguration;
-
     public void Configure(EntityTypeBuilder<Task> builder)
     {
         builder.ToTable("Tasks");
@@ -15,7 +13,6 @@ public class TasksMap : IEntityTypeConfiguration<Task>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id)
-            .IsRequired()
             .HasColumnName("Id")
             .HasColumnType("VARCHAR(36)");
 
@@ -46,10 +43,9 @@ public class TasksMap : IEntityTypeConfiguration<Task>
         builder.Property(x => x.CreatedAt)
             .HasColumnName("createdAt")
             .HasColumnType("DATETIME");
-        
+
         builder.Property(x => x.UpdatedAt)
             .HasColumnName("updatedAt")
             .HasColumnType("DATETIME");
-            
     }
 }

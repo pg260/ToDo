@@ -25,7 +25,14 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/Manager.Infra.csproj": {
+                "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/Manager.Infra.csproj"
+              },
+              "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Services/Manager.Services.csproj": {
+                "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Services/Manager.Services.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -38,6 +45,12 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -57,6 +70,268 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.110/sdk/6.0.110/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/Manager.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/Manager.Core.csproj",
+        "projectName": "Manager.Core",
+        "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/Manager.Core.csproj",
+        "packagesPath": "/home/pg/.nuget/packages/",
+        "outputPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/pg/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.110/sdk/6.0.110/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/Manager.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/Manager.Domain.csproj",
+        "projectName": "Manager.Domain",
+        "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/Manager.Domain.csproj",
+        "packagesPath": "/home/pg/.nuget/packages/",
+        "outputPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/pg/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/Manager.Core.csproj": {
+                "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Core/Manager.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.110/sdk/6.0.110/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/Manager.Infra.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/Manager.Infra.csproj",
+        "projectName": "Manager.Infra",
+        "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/Manager.Infra.csproj",
+        "packagesPath": "/home/pg/.nuget/packages/",
+        "outputPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/pg/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/Manager.Domain.csproj": {
+                "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/Manager.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.110/sdk/6.0.110/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Services/Manager.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Services/Manager.Services.csproj",
+        "projectName": "Manager.Services",
+        "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Services/Manager.Services.csproj",
+        "packagesPath": "/home/pg/.nuget/packages/",
+        "outputPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Services/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/pg/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/Manager.Infra.csproj": {
+                "projectPath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/Manager.Infra.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

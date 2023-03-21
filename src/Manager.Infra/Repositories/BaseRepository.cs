@@ -1,3 +1,4 @@
+using Manager.Core.Exceptions;
 using Manager.Domain.Entities;
 using Manager.Infra.Context;
 using Manager.Infra.Interfaces;
@@ -44,7 +45,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : Base
 
     public virtual async Task<T> Get(Guid id)
     {
-        return await _context.Set<T>().FindAsync(id);
+        return await _context.Set<T>().FindAsync(id) ?? throw new DomainExceptions("Não foi encontrado nenhum resultado para essa pesquisa.");
     }
 
     public virtual async Task<List<T>> Get()
