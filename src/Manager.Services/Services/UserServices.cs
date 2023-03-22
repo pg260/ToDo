@@ -1,4 +1,3 @@
-using System.Data;
 using AutoMapper;
 using Manager.Core.Exceptions;
 using Manager.Domain.Entities;
@@ -20,7 +19,7 @@ public class UserServices : IUserService
     private readonly IMapper _mapper;
     private readonly IUserRepository _userRepository;
 
-    public async Task<CreateUserDto> Create(UserDTO userDto)
+    public async Task<CreateUserDto> Create(CreateUserDto userDto)
     {
         var userExists = await _userRepository.GetByEmail(userDto.Email);
 
@@ -37,16 +36,23 @@ public class UserServices : IUserService
         return _mapper.Map<CreateUserDto>(userCreated);
     }
 
-    public async Task<UpdateUserDto> Update(UserDTO userDTO)
+    public async Task<UpdateUserDto> Update(UpdateUserDto userDto)
     {
-        var userExists = await _userRepository.Get(userDTO.Id);
+        var userExists = await _userRepository.Get(userDto.Id);
 
         if (userExists == null)
         {
             throw new DomainExceptions("Usuário não encontrado");
         }
+        //testando
+        else if (userExists.Password != userDto.Password)
+        {
+            throw new DomainExceptions("Algum campo está incorreto, verifique e tente novamente");
+        }
 
-        var user = _mapper.Map<User>(userDTO);
+        asdasda
+        
+        var user = _mapper.Map<User>(userDto);
         user.Validate();
 
         var userUpdated = await _userRepository.Update(user);
@@ -56,7 +62,7 @@ public class UserServices : IUserService
 
     public async Task Remove(Guid id)
     {
-        await Remove(id);
+        await _userRepository.Remove(id);
     }
 
     public async Task<UserDTO> Get(Guid id)

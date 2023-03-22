@@ -16,10 +16,8 @@ public class TasksServices : ITaskService
 
     private readonly IMapper _mapper;
     private readonly ITaskRepository _taskRepository;
-    private ITaskService _taskServiceImplementation;
 
-
-    public async Task<CreateTaskDto> Create(TasksDTO tasksDto)
+    public async Task<CreateTaskDto> Create(CreateTaskDto tasksDto)
     {
         var taskExists = await _taskRepository.Get(tasksDto.Name);
 
@@ -51,9 +49,9 @@ public class TasksServices : ITaskService
         return _mapper.Map<TasksDTO>(taskUpdated);
     }
 
-    public Task Remove(Guid id)
+    public async Task Remove(string name)
     {
-        throw new NotImplementedException();
+        await Remove(name);
     }
 
     public Task<TasksDTO> Get(Guid id)

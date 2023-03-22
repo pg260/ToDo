@@ -5,9 +5,14 @@ namespace Manager.Domain.Entities;
 
 public class User : Base
 {
+    public User()
+    {
+        
+    }
+    
     public User(Guid id, string name, string email, string password)
     {
-        Id = Guid.NewGuid();
+        Id = id;
         Name = name;
         Email = email;
         Password = password;

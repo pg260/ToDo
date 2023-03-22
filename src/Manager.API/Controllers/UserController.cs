@@ -1,5 +1,6 @@
 using AutoMapper;
 using Manager.API.ViewModels;
+using Manager.Core.Exceptions;
 using Manager.Services.DTO.User;
 using Manager.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -28,21 +29,88 @@ public class UserController : ControllerBase
         {
             var userDto = _mapper.Map<CreateUserDto>(userViewModel);
             var userCreated = await _userService.Create(userDto);
-
-            return Ok(new ResultViewModel
-            {
-                Message = "Usuário criado com sucesso",
-                Sucess = true,
+            return Ok(new ResultViewModel 
+            { 
+                Message = "Usuário criado com sucesso", 
+                Sucess = true, 
                 Data = userCreated
             });
         }
-        catch (DomainExceptions ex)
+        catch (Exception e)
         {
-            return BadRequest(Responses.DomainErrorMessage(ex.Message, ex.Errors));
+            return StatusCode(500, "erro");
+        }
+    }
+
+    [HttpPut]
+    [Route("/api/v1/Users/Update")]
+    public async Task<IActionResult> Update([FromBody] UpdateViewModel userViewModel)
+    {
+        try
+        {
+            var userDto = _mapper.Map<UpdateUserDto>(userViewModel);
+            var userUpdated = await _userService.Update(userDto);
+            return Ok(new ResultViewModel
+            {
+                Message = "Usuáio modificado com sucesso.",
+                Sucess = true,
+                Data = userUpdated
+            });
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "Erro no update.");
+        }
+    }
+
+    [HttpDelete]
+    [Route("/api/v1/users/Remove{id}")]
+    public async Task<IActionResult> Remove(Guid id)
+    {
+        try
+        {
+            await _userService.Remove(id);
+
+            return Ok(new ResultViewModel
+            {
+                Message = "Usuário deletado com sucesso",
+                Sucess = true,
+                Data = null
+            });
         }
         catch (Exception)
         {
-            return StatusCode(500, "Erro");
+            return StatusCode(500, "erro");
+        }
+    }
+
+    [HttpGet]
+    [Route("/api/v1/Users/Get{id}")]
+    public async Task<IActionResult> Get(Guid id)
+    {
+        try
+        {
+            var userDto = await _userService.Get(id);
+
+            if (userDto == null)
+            {
+                return Ok(new ResultViewModel
+                {
+                    Message = "Nenhum usuã́rio com o id informado foi encontrado.",
+                    Sucess = true,
+                    Data = userDto
+                });
+            }
+            return Ok(new ResultViewModel
+            {
+                Message = "Pesquisa realizada com sucesso.",
+                Sucess = true,
+                Data = userDto
+            });
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "erro");
         }
     }
 }

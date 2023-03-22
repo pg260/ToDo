@@ -25,10 +25,19 @@ public class BaseRepository<T> : IBaseRepository<T> where T : Base
 
     public virtual async Task<T> Update(T obj)
     {
-        _context.Entry(obj).State = EntityState.Modified;
-        await _context.SaveChangesAsync();
+        try
+        {
+            var entity = await _context.Set<T>().FindAsync(obj.Id);
+            _context.Entry(entity).CurrentValues.SetValues(obj);
+            
+            await _context.SaveChangesAsync();
 
-        return obj;
+            return obj;
+        }
+        catch (Exception e)
+        {
+            throw new DomainExceptions("Erro com o save");
+        }
     }
 
     public virtual async Task<bool> Remove(Guid id)
