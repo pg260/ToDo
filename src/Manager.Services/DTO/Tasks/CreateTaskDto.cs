@@ -2,15 +2,17 @@ namespace Manager.Services.DTO.Tasks;
 
 public class CreateTaskDto
 {
-    public CreateTaskDto(string name, string? description, DateTime createdAt, DateTime? deadline, short concluded)
+    public CreateTaskDto(Guid userId, string name, string? description, DateTime createdAt, short concluded, DateTime? deadline)
     {
+        UserId = userId;
         Name = name;
         Description = description;
         CreatedAt = createdAt;
-        Deadline = deadline;
         Concluded = concluded;
+        Deadline = deadline;
     }
 
+    public Guid UserId { get; set; }
     public string Name { get; set; }
     public string? Description { get; set; }
     public DateTime CreatedAt { get; set; }

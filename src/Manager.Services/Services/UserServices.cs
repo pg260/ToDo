@@ -44,17 +44,21 @@ public class UserServices : IUserService
         {
             throw new DomainExceptions("Usuário não encontrado");
         }
-        //testando
-        else if (userExists.Password != userDto.Password)
+        
+        if (userExists.Password != userDto.Password)
         {
-            throw new DomainExceptions("Algum campo está incorreto, verifique e tente novamente");
+            throw new DomainExceptions("Senha incorreta, verifique e tente novamente");
         }
 
-        asdasda
+        if (userDto.NewPassword != userDto.NewPasswordConfirme)
+        {
+            throw new DomainExceptions("Senhas diferentes, verifique e tente novamente");
+        }
         
         var user = _mapper.Map<User>(userDto);
         user.Validate();
 
+        user.Password = userDto.NewPassword;
         var userUpdated = await _userRepository.Update(user);
 
         return _mapper.Map<UpdateUserDto>(userUpdated);

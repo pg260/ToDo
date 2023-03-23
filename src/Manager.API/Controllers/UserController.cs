@@ -22,7 +22,7 @@ public class UserController : ControllerBase
     
     
     [HttpPost]
-    [Route("/api/v1/users/create")]
+    [Route("/api/v1/users/CreateUser")]
     public async Task<IActionResult> Create([FromBody] CreateUserViewModel userViewModel)
     {
         try
@@ -43,7 +43,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPut]
-    [Route("/api/v1/Users/Update")]
+    [Route("/api/v1/Users/UpdateUser")]
     public async Task<IActionResult> Update([FromBody] UpdateViewModel userViewModel)
     {
         try
@@ -59,12 +59,12 @@ public class UserController : ControllerBase
         }
         catch (Exception e)
         {
-            return StatusCode(500, "Erro no update.");
+            return StatusCode(500, e);
         }
     }
 
     [HttpDelete]
-    [Route("/api/v1/users/Remove{id}")]
+    [Route("/api/v1/users/RemoveUser/{id}")]
     public async Task<IActionResult> Remove(Guid id)
     {
         try
@@ -85,7 +85,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    [Route("/api/v1/Users/Get{id}")]
+    [Route("/api/v1/Users/GetUser/{id}")]
     public async Task<IActionResult> Get(Guid id)
     {
         try
@@ -106,6 +106,90 @@ public class UserController : ControllerBase
                 Message = "Pesquisa realizada com sucesso.",
                 Sucess = true,
                 Data = userDto
+            });
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "erro");
+        }
+    }
+
+    [HttpGet]
+    [Route("/api/v1/Users/GetAllUsers")]
+    public async Task<IActionResult> Get()
+    {
+        try
+        {
+            List<UserDTO> allUsers = await _userService.Get();
+
+            return Ok(new ResultViewModel
+            {
+                Message = "Pesquisa realizada com sucesso",
+                Sucess = true,
+                Data = allUsers
+            });
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "erro");
+        }
+    }
+
+    [HttpGet]
+    [Route("/api/v1/Users/SearchByName")]
+    public async Task<IActionResult> SearchByName(string name)
+    {
+        try
+        {
+            List<UserDTO> searchUsers = await _userService.SearchByName(name);
+
+            return Ok(new ResultViewModel
+            {
+                Message = "Pesquisa realizada com sucesso",
+                Sucess = true,
+                Data = searchUsers
+            });
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "erro");
+        }
+    }
+    
+    [HttpGet]
+    [Route("/api/v1/Users/SearchByEmail")]
+    public async Task<IActionResult> SearchByEmail(string email)
+    {
+        try
+        {
+            List<UserDTO> searchUsers = await _userService.SearchByEmail(email);
+
+            return Ok(new ResultViewModel
+            {
+                Message = "Pesquisa realizada com sucesso",
+                Sucess = true,
+                Data = searchUsers
+            });
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "erro");
+        }
+    }
+    
+    [HttpGet]
+    [Route("/api/v1/Users/GetByEmail")]
+    public async Task<IActionResult> GetByEmail(string email)
+    {
+        try
+        {
+            var searchUsers = await _userService.GetByEmail(email);
+
+            return Ok(new ResultViewModel
+            {
+                Message = "Pesquisa realizada com sucesso",
+                Sucess = true,
+                Data = searchUsers
             });
         }
         catch (Exception e)

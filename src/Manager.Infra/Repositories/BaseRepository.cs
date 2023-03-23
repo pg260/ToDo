@@ -40,18 +40,6 @@ public class BaseRepository<T> : IBaseRepository<T> where T : Base
         }
     }
 
-    public virtual async Task<bool> Remove(Guid id)
-    {
-        var obj = await _context.Set<T>().SingleOrDefaultAsync(x => x.Id == id);
-
-        if (obj == null) return false;
-        
-        _context.Remove(obj);
-         await _context.SaveChangesAsync();
-
-         return true;
-    }
-
     public virtual async Task<T> Get(Guid id)
     {
         return await _context.Set<T>().FindAsync(id) ?? throw new DomainExceptions("Não foi encontrado nenhum resultado para essa pesquisa.");

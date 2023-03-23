@@ -15,6 +15,18 @@ public class UserRepository : BaseRepository<User>, IUserRepository
 
     private readonly ManagerContext _context;
 
+    public virtual async Task<bool> Remove(Guid id)
+    {
+        var obj = await _context.Set<User>().SingleOrDefaultAsync(x => x.Id == id);
+
+        if (obj == null) return false;
+        
+        _context.Remove(obj);
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
+    
     public async Task<User?> GetByEmail(string email)
     {
         return await _context.Users

@@ -18,6 +18,18 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
     {
         return await _context.Set<Task>().FindAsync(name);
     }
+    
+    public virtual async Task<bool> Remove(string name)
+    {
+        var obj = await _context.Set<Task>().SingleOrDefaultAsync(x => x.Name == name);
+
+        if (obj == null) return false;
+        
+        _context.Remove(obj);
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
 
     public async Task<List<Task>> SearchByName(string name)
     {
@@ -31,6 +43,14 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
     {
         return await _context.Tasks
             .Where(x => x.Concluded == concluded)
+            .AsNoTracking()
+            .ToListAsync();
+    }
+
+    public async Task<List<Task>> SearchByUser(Guid id)
+    {
+        return await _context.Tasks
+            .Where(x => x.UserId == id)
             .AsNoTracking()
             .ToListAsync();
     }

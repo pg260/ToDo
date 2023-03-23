@@ -52,9 +52,8 @@ public class UserValidator : AbstractValidator<User>
 
             .MaximumLength(60)
             .WithMessage("O email deve ter no máximo 60 caracteres")
-
-            .Matches(
-                @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")
+            
+            .EmailAddress()
             .WithMessage("Email inválido");
     }
 }
