@@ -23,7 +23,7 @@ public class UserController : ControllerBase
     
     
     [HttpPost]
-    [Route("/api/v1/users/CreateUser")]
+    [Route("/api/v1/Users/CreateUser")]
     public async Task<IActionResult> Create([FromBody] CreateUserViewModel userViewModel)
     {
         try

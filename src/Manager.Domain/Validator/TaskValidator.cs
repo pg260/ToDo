@@ -17,12 +17,6 @@ public class TaskValidator : AbstractValidator<Task>
             .WithMessage("A tarefa não pode ser vazia");
 
         RuleFor(x => x.Description)
-            .NotNull()
-            .WithMessage("A descrição não pode ser nula")
-
-            .NotEmpty()
-            .WithMessage("A descrição não pode ser vazia")
-
             .MaximumLength(200)
             .WithMessage("A descrição deve conter no máximo 200 caracteres");
 
@@ -32,6 +26,7 @@ public class TaskValidator : AbstractValidator<Task>
 
             .NotEmpty()
             .WithMessage("O id de usuário não pode ser vazio");
+        
         RuleFor(x => x.Name)
             .NotNull()
             .WithMessage("O nome não pode ser nulo")
