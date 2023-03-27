@@ -1,3 +1,4 @@
+using Manager.Core.Exceptions;
 using Manager.Infra.Context;
 using Manager.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -14,9 +15,11 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
 
     private readonly ManagerContext _context;
 
-    public async Task<Task> Get(string name)
+    public async Task<Task> Get(string name, Guid id)
     {
-        return await _context.Set<Task>().FindAsync(name);
+        return await _context.Set<Task>()
+            .Where(x => x.UserId == id && x.Name == name)
+            .FirstOrDefaultAsync() ?? throw new DomainExceptions("Não existe nenhuma task com esse nome.");
     }
     
     public virtual async Task<bool> Remove(string name)
@@ -31,18 +34,10 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
         return true;
     }
 
-    public async Task<List<Task>> SearchByName(string name)
+    public async Task<List<Task>> SearchByConcluded(bool concluded, Guid id)
     {
         return await _context.Tasks
-            .Where(x => x.Name.ToLower().Contains(name.ToLower()))
-            .AsNoTracking()
-            .ToListAsync();
-    }
-
-    public async Task<List<Task>> SearchByConcluded(bool concluded)
-    {
-        return await _context.Tasks
-            .Where(x => x.Concluded == concluded)
+            .Where(x => x.UserId == id && x.Concluded == concluded)
             .AsNoTracking()
             .ToListAsync();
     }

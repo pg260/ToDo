@@ -9,7 +9,7 @@ public class Task : Base
     {
         
     }
-    public Task(DateTime? updatedAt, string name, string description, Guid userId, bool concluded, DateTime? concludedAt, DateTime? deadline)
+    public Task(DateTime? updatedAt, string name, string description, Guid userId, DateTime createdAt, bool concluded, DateTime? concludedAt, DateTime? deadline)
     {
         Name = name;
         Description = description;
@@ -17,7 +17,7 @@ public class Task : Base
         Concluded = concluded;
         ConcludedAt = concludedAt;
         Deadline = deadline;
-        CreatedAt = DateTime.UtcNow;
+        CreatedAt = createdAt;
         UpdatedAt = updatedAt;
         _errors = new List<string>();
     }
@@ -28,7 +28,7 @@ public class Task : Base
     public bool Concluded { get; set; }
     public DateTime? ConcludedAt { get; set; }
     public DateTime? Deadline { get; set; }
-    public DateTime CreatedAt { get;}
+    public DateTime CreatedAt { get; set; }
     
     public DateTime? UpdatedAt { get; set; }
     

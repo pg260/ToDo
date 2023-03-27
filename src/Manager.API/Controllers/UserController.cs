@@ -1,5 +1,6 @@
 using AutoMapper;
 using Manager.API.ViewModels;
+using Manager.API.ViewModels.UserViewModels;
 using Manager.Core.Exceptions;
 using Manager.Services.DTO.User;
 using Manager.Services.Interfaces;

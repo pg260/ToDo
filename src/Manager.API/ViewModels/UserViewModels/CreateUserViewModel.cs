@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Manager.API.ViewModels;
+namespace Manager.API.ViewModels.UserViewModels;
 
 public class CreateUserViewModel
 {

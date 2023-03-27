@@ -2,13 +2,18 @@ namespace Manager.Services.DTO.Tasks;
 
 public class CreateTaskDto
 {
-    public CreateTaskDto(Guid userId, string name, string? description, DateTime createdAt, short concluded, DateTime? deadline)
+    public CreateTaskDto()
+    {
+        
+    }
+    
+    public CreateTaskDto(Guid userId, string name, string? description, DateTime? deadline)
     {
         UserId = userId;
         Name = name;
         Description = description;
-        CreatedAt = createdAt;
-        Concluded = concluded;
+        CreatedAt = DateTime.Now;
+        Concluded = false;
         Deadline = deadline;
     }
 
@@ -16,6 +21,6 @@ public class CreateTaskDto
     public string Name { get; set; }
     public string? Description { get; set; }
     public DateTime CreatedAt { get; set; }
-    public short Concluded { get; set; }
+    public bool Concluded { get; set; }
     public DateTime? Deadline { get; set; }
 }

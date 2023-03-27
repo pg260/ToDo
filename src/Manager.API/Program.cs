@@ -1,13 +1,17 @@
 using AutoMapper;
 using Manager.API.ViewModels;
+using Manager.API.ViewModels.TasksViewModel;
+using Manager.API.ViewModels.UserViewModels;
 using Manager.Domain.Entities;
 using Manager.Infra.Context;
 using Manager.Infra.Interfaces;
 using Manager.Infra.Repositories;
+using Manager.Services.DTO.Tasks;
 using Manager.Services.DTO.User;
 using Manager.Services.Interfaces;
 using Manager.Services.Services;
 using Microsoft.EntityFrameworkCore;
+using Task = Manager.Domain.Entities.Task;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +19,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IUserService, UserServices>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+builder.Services.AddScoped<ITaskService, TasksServices>();
+builder.Services.AddScoped<ITaskRepository, Tasksepository>();
 
 AutoMapperDependenceInjection();
 
@@ -27,6 +34,11 @@ void AutoMapperDependenceInjection()
         cfg.CreateMap<User, UpdateUserDto>().ReverseMap();
         cfg.CreateMap<CreateUserViewModel, CreateUserDto>().ReverseMap();
         cfg.CreateMap<UpdateViewModel, UpdateUserDto>().ReverseMap();
+
+        cfg.CreateMap<Task, TasksDTO>().ReverseMap();
+        cfg.CreateMap<Task, CreateTaskDto>().ReverseMap();
+        cfg.CreateMap<Task, RemoveTaskDto>().ReverseMap();
+        cfg.CreateMap<CreateTaskViewModel, CreateTaskDto>().ReverseMap();
     });
     
     builder.Services.AddSingleton(autoMapperConfig.CreateMapper());

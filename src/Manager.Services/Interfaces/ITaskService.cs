@@ -9,8 +9,7 @@ public interface ITaskService
     Task<TasksDTO> Update(TasksDTO tasksDto);
     
     Task Remove(RemoveTaskDto removeTaskDto);
-    Task<TasksDTO> Get(TasksDTO tasksDto);
-    Task<List<TasksDTO>> Get();
-    Task<List<TasksDTO>> SearchByName(string name);
-    Task<List<TasksDTO>> SearchByConcluded(bool concluded);
+    Task<TasksDTO> Get(string name, Guid id);
+    Task<List<TasksDTO>> SearchByConcluded(bool concluded, Guid id);
+    Task<List<TasksDTO>> SearchByUser(Guid id);
 }

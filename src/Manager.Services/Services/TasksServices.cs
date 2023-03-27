@@ -26,10 +26,11 @@ public class TasksServices : ITaskService
             foreach (var tasks in tasksThisUser)
             {
                 if(tasks.Name == tasksDto.Name)
-                    throw new DomainExceptions("Não pode ter dois nomes iguais.");
+                    throw new DomainExceptions("Não pode ter duas tasks com nomes iguais.");
             }
 
             var task = _mapper.Map<Domain.Entities.Task>(tasksDto);
+            task.CreatedAt = DateTime.Now;
             task.Validate();
 
             var taskCreated = await _taskRepository.Create(task);
@@ -45,14 +46,9 @@ public class TasksServices : ITaskService
     {
         try
         {
-            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(tasksDto.UserId);
+            VerificandoTasksUsuario(tasksDto.UserId);
 
-            if (tasksThisUser == null)
-            {
-                throw new DomainExceptions("Esse usuário não possui tasks.");
-            }
-
-            var taskExists = await _taskRepository.Get(tasksDto.Name);
+            var taskExists = await _taskRepository.Get(tasksDto.Name, tasksDto.UserId);
 
             if (taskExists == null)
             {
@@ -75,12 +71,9 @@ public class TasksServices : ITaskService
     {
         try
         {
+            VerificandoTasksUsuario(tasksDto.UserId);
+            
             List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(tasksDto.UserId);
-
-            if (tasksThisUser == null)
-            {
-                throw new DomainExceptions("Esse usuário já não possui nenhuma task.");
-            }
         
             foreach (var tasks in tasksThisUser)
             {
@@ -95,18 +88,13 @@ public class TasksServices : ITaskService
         }
     }
 
-    public async Task<TasksDTO> Get(TasksDTO tasksDto)
+    public async Task<TasksDTO> Get(string name, Guid id)
     {
         try
         {
-            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(tasksDto.UserId);
+            VerificandoTasksUsuario(id);
 
-            if (tasksThisUser == null)
-            {
-                throw new DomainExceptions("Esse usuário não possui tasks.");
-            }
-
-            var taskExists = await _taskRepository.Get(tasksDto.Name);
+            var taskExists = await _taskRepository.Get(name, id);
 
             if (taskExists == null)
             {
@@ -121,23 +109,48 @@ public class TasksServices : ITaskService
         }
     }
 
-    public async Task<TasksDTO> Get(string name)
+    public async Task<List<TasksDTO>> SearchByConcluded(bool concluded, Guid id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(id);
+
+            if (tasksThisUser == null)
+            {
+                throw new DomainExceptions("Esse usuário não possui tasks.");
+            }
+
+            var taskExists = await _taskRepository.SearchByConcluded(concluded, id);
+
+            if (taskExists == null)
+            {
+                throw new DomainExceptions("Nenhuma task foi concluida ainda.");
+            }
+
+            return _mapper.Map<List<TasksDTO>>(taskExists);
+        }
+        catch (DomainExceptions)
+        {
+            throw new DomainExceptions("Ocorreu algum erro, contate o suporte.");
+        }
     }
 
-    public Task<List<TasksDTO>> Get()
+    public async Task<List<TasksDTO>> SearchByUser(Guid id)
     {
-        throw new NotImplementedException();
+        VerificandoTasksUsuario(id);
+
+        var allUsers = await _taskRepository.SearchByUser(id);
+
+        return _mapper.Map<List<TasksDTO>>(allUsers);
     }
 
-    public Task<List<TasksDTO>> SearchByName(string name)
+    public async void VerificandoTasksUsuario(Guid id)
     {
-        throw new NotImplementedException();
-    }
+        List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(id);
 
-    public Task<List<TasksDTO>> SearchByConcluded(bool concluded)
-    {
-        throw new NotImplementedException();
+        if (tasksThisUser == null)
+        {
+            throw new DomainExceptions("Esse usuário não possui tasks.");
+        }
     }
 }
