@@ -2,12 +2,12 @@ namespace Manager.Services.DTO.Tasks;
 
 public class RemoveTaskDto
 {
-    public RemoveTaskDto(string name, Guid userId)
+    public RemoveTaskDto(Guid id, Guid userId)
     {
-        Name = name;
+        Id = id;
         UserId = userId;
     }
 
-    public string Name { get; set; }
+    public Guid Id { get; set; }
     public Guid UserId { get; set; }
 }

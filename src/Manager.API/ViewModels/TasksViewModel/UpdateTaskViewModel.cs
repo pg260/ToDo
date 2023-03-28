@@ -13,4 +13,11 @@ public class UpdateTaskViewModel
     public string? Description { get; set; }
     public bool Concluded { get; set; }
     public DateTime? Deadline { get; set; }
+    
+    [Required(ErrorMessage = "É preciso informar o Id do proprietário da task.")]
+    public Guid UserId { get; set; }
+    
+    [Required(ErrorMessage = "É preciso informar o Id da task")]
+    public Guid Id { get; set; }
+    
 }

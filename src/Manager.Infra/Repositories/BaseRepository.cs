@@ -3,6 +3,7 @@ using Manager.Domain.Entities;
 using Manager.Infra.Context;
 using Manager.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Task = Manager.Domain.Entities.Task;
 
 namespace Manager.Infra.Repositories;
 
@@ -29,7 +30,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : Base
         {
             var entity = await _context.Set<T>().FindAsync(obj.Id);
             _context.Entry(entity).CurrentValues.SetValues(obj);
-            
+        
             await _context.SaveChangesAsync();
 
             return obj;
@@ -42,7 +43,8 @@ public class BaseRepository<T> : IBaseRepository<T> where T : Base
 
     public virtual async Task<T> Get(Guid id)
     {
-        return await _context.Set<T>().FindAsync(id) ?? throw new DomainExceptions("Não foi encontrado nenhum resultado para essa pesquisa.");
+        await using var context = new ManagerContext();
+        return await context.Set<T>().FindAsync(id) ?? throw new DomainExceptions("Não foi encontrado nenhum resultado para essa pesquisa.");
     }
 
     public virtual async Task<List<T>> Get()

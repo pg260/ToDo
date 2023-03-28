@@ -9,6 +9,7 @@ public class CreateTaskDto
     
     public CreateTaskDto(Guid userId, string name, string? description, DateTime? deadline)
     {
+        Id = Guid.NewGuid();
         UserId = userId;
         Name = name;
         Description = description;
@@ -17,6 +18,8 @@ public class CreateTaskDto
         Deadline = deadline;
     }
 
+    
+    public Guid Id { get; set; }
     public Guid UserId { get; set; }
     public string Name { get; set; }
     public string? Description { get; set; }

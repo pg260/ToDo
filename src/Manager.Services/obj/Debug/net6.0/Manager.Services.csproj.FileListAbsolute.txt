@@ -17,3 +17,22 @@
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Services/obj/Debug/net6.0/Manager.Services.dll
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Services/obj/Debug/net6.0/ref/Manager.Services.dll
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Services/obj/Debug/net6.0/Manager.Services.pdb
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\bin\Debug\net6.0\Manager.Services.deps.json
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\bin\Debug\net6.0\Manager.Services.dll
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\bin\Debug\net6.0\Manager.Services.pdb
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\bin\Debug\net6.0\Manager.Core.dll
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\bin\Debug\net6.0\Manager.Domain.dll
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\bin\Debug\net6.0\Manager.Infra.dll
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\bin\Debug\net6.0\Manager.Infra.pdb
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\bin\Debug\net6.0\Manager.Core.pdb
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\bin\Debug\net6.0\Manager.Domain.pdb
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\obj\Debug\net6.0\Manager.Services.csproj.AssemblyReference.cache
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\obj\Debug\net6.0\Manager.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\obj\Debug\net6.0\Manager.Services.AssemblyInfoInputs.cache
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\obj\Debug\net6.0\Manager.Services.AssemblyInfo.cs
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\obj\Debug\net6.0\Manager.Services.csproj.CoreCompileInputs.cache
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\obj\Debug\net6.0\Manager.Services.csproj.CopyComplete
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\obj\Debug\net6.0\Manager.Services.dll
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\obj\Debug\net6.0\refint\Manager.Services.dll
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\obj\Debug\net6.0\Manager.Services.pdb
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Services\obj\Debug\net6.0\ref\Manager.Services.dll

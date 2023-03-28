@@ -1,11 +1,9 @@
 using AutoMapper;
-using Manager.API.ViewModels;
 using Manager.API.ViewModels.UserViewModels;
 using Manager.Core.Exceptions;
 using Manager.Services.DTO.User;
 using Manager.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Task = Manager.Domain.Entities.Task;
 
 namespace Manager.API.Controllers;
 
@@ -37,9 +35,9 @@ public class UserController : ControllerBase
                 Data = userCreated
             });
         }
-        catch (Exception e)
+        catch (DomainExceptions)
         {
-            return StatusCode(500, "erro");
+            throw new DomainExceptions("Falha na criação do usuário, por favor contate o suporte.");
         }
     }
 
@@ -58,9 +56,9 @@ public class UserController : ControllerBase
                 Data = userUpdated
             });
         }
-        catch (Exception e)
+        catch (DomainExceptions)
         {
-            return StatusCode(500, e);
+            throw new DomainExceptions("Falha no update do usuário, por favor contate o suporte.");
         }
     }
 
@@ -79,9 +77,9 @@ public class UserController : ControllerBase
                 Data = null
             });
         }
-        catch (Exception)
+        catch (DomainExceptions)
         {
-            return StatusCode(500, "erro");
+            throw new DomainExceptions("Falha na remoção do usuário, por favor contate o suporte.");
         }
     }
 
@@ -109,9 +107,9 @@ public class UserController : ControllerBase
                 Data = userDto
             });
         }
-        catch (Exception e)
+        catch (DomainExceptions)
         {
-            return StatusCode(500, "erro");
+            throw new DomainExceptions("Falha na pesquisa de usuários, por favor contate o suporte.");
         }
     }
 
@@ -130,9 +128,9 @@ public class UserController : ControllerBase
                 Data = allUsers
             });
         }
-        catch (Exception e)
+        catch (DomainExceptions)
         {
-            return StatusCode(500, "erro");
+            throw new DomainExceptions("Falha na pesquisa de usuários, por favor contate o suporte.");
         }
     }
 
@@ -151,9 +149,9 @@ public class UserController : ControllerBase
                 Data = searchUsers
             });
         }
-        catch (Exception e)
+        catch (DomainExceptions)
         {
-            return StatusCode(500, "erro");
+            throw new DomainExceptions("Falha na pesquisa de usuários, por favor contate o suporte.");
         }
     }
     
@@ -172,9 +170,9 @@ public class UserController : ControllerBase
                 Data = searchUsers
             });
         }
-        catch (Exception e)
+        catch (DomainExceptions)
         {
-            return StatusCode(500, "erro");
+            throw new DomainExceptions("Falha na pesquisa de usuários, por favor contate o suporte.");
         }
     }
     
@@ -193,9 +191,9 @@ public class UserController : ControllerBase
                 Data = searchUsers
             });
         }
-        catch (Exception e)
+        catch (DomainExceptions)
         {
-            return StatusCode(500, "erro");
+            throw new DomainExceptions("Falha na pesquisa de usuários, por favor contate o suporte.");
         }
     }
 }

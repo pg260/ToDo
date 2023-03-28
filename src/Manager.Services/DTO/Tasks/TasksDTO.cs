@@ -7,16 +7,15 @@ public class TasksDTO
         
     }
 
-    public TasksDTO(Guid id, string name, string? description, Guid userId, bool concluded, DateTime? concludedAt, DateTime? deadline, DateTime createdAt, DateTime? updatedAt)
+    public TasksDTO(Guid id, string name, string? description, Guid userId, bool concluded, DateTime? concludedAt, DateTime? deadline, DateTime? updatedAt)
     {
         Id = id;
+        UserId = userId;
         Name = name;
         Description = description;
-        UserId = userId;
         Concluded = concluded;
         ConcludedAt = concludedAt;
         Deadline = deadline;
-        CreatedAt = createdAt;
         UpdatedAt = updatedAt;
     }
 

@@ -48,16 +48,22 @@ public class TasksServices : ITaskService
         {
             VerificandoTasksUsuario(tasksDto.UserId);
 
-            var taskExists = await _taskRepository.Get(tasksDto.Name, tasksDto.UserId);
-
+            var taskExists = await _taskRepository.Get(tasksDto.Id, tasksDto.UserId);
+    
             if (taskExists == null)
             {
                 throw new DomainExceptions("Task não encontrada, veja se o nome digitado está correto.");
             }
-
+            
             var task = _mapper.Map<Domain.Entities.Task>(tasksDto);
+            task.UpdatedAt = DateTime.Now;
+            task.CreatedAt = taskExists.CreatedAt;
+            
+            if (task.Concluded && !taskExists.Concluded)
+                task.ConcludedAt = DateTime.Now;
+            
             task.Validate();
-
+    
             var taskUpdated = await _taskRepository.Update(task);
             return _mapper.Map<TasksDTO>(taskUpdated);
         }
@@ -77,8 +83,8 @@ public class TasksServices : ITaskService
         
             foreach (var tasks in tasksThisUser)
             {
-                if(tasks.Name == tasksDto.Name)
-                    await _taskRepository.Remove(tasks.Name);
+                if(tasks.Id == tasksDto.Id)
+                    await _taskRepository.Remove(tasks.Id);
             
             }
         }
@@ -88,13 +94,13 @@ public class TasksServices : ITaskService
         }
     }
 
-    public async Task<TasksDTO> Get(string name, Guid id)
+    public async Task<TasksDTO> Get(Guid id, Guid userId)
     {
         try
         {
-            VerificandoTasksUsuario(id);
+            VerificandoTasksUsuario(userId);
 
-            var taskExists = await _taskRepository.Get(name, id);
+            var taskExists = await _taskRepository.Get(id, userId);
 
             if (taskExists == null)
             {

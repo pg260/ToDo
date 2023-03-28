@@ -13,6 +13,7 @@ public class TasksMap : IEntityTypeConfiguration<Task>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id)
+            .IsRequired()
             .HasColumnName("Id")
             .HasColumnType("VARCHAR(36)");
 

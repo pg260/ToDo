@@ -15,16 +15,36 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
 
     private readonly ManagerContext _context;
 
-    public async Task<Task> Get(string name, Guid id)
+
+    public async Task<Task> Get(Guid id, Guid userId)
     {
-        return await _context.Set<Task>()
-            .Where(x => x.UserId == id && x.Name == name)
-            .FirstOrDefaultAsync() ?? throw new DomainExceptions("Não existe nenhuma task com esse nome.");
+        await using var context = new ManagerContext();
+        return await context.Set<Task>()
+            .Where(x => x.UserId == userId && x.Id == id)
+            .AsNoTracking()
+            .SingleOrDefaultAsync() ?? throw new DomainExceptions("Essa task não existe.");
     }
-    
-    public virtual async Task<bool> Remove(string name)
+
+    public override async Task<Task> Update(Task obj)
     {
-        var obj = await _context.Set<Task>().SingleOrDefaultAsync(x => x.Name == name);
+        try
+        {
+            var entity = await _context.Set<Task>().FindAsync(obj.Id);
+            _context.Entry(entity).CurrentValues.SetValues(obj);
+        
+            await _context.SaveChangesAsync();
+
+            return obj;
+        }
+        catch (Exception e)
+        {
+            throw new DomainExceptions("Erro com o save");
+        }
+    }
+
+    public virtual async Task<bool> Remove(Guid id)
+    {
+        var obj = await _context.Set<Task>().SingleOrDefaultAsync(x => x.Id == id);
 
         if (obj == null) return false;
         
@@ -42,10 +62,10 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
             .ToListAsync();
     }
 
-    public async Task<List<Task>> SearchByUser(Guid id)
+    public async Task<List<Task>> SearchByUser(Guid userId)
     {
         return await _context.Tasks
-            .Where(x => x.UserId == id)
+            .Where(x => x.UserId == userId)
             .AsNoTracking()
             .ToListAsync();
     }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Manager.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,15 +22,15 @@ namespace Manager.Infra.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Name = table.Column<string>(type: "VARCHAR(60)", maxLength: 60, nullable: false, collation: "utf8mb4_0900_ai_ci")
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    description = table.Column<string>(type: "VARCHAR(200)", maxLength: 200, nullable: false, collation: "utf8mb4_0900_ai_ci")
+                    description = table.Column<string>(type: "VARCHAR(200)", maxLength: 200, nullable: true, collation: "utf8mb4_0900_ai_ci")
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UserId = table.Column<string>(type: "VARCHAR(36)", nullable: false, collation: "utf8mb4_0900_ai_ci")
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     concluded = table.Column<bool>(type: "TINYINT(1)", nullable: false),
-                    concludedAt = table.Column<DateTime>(type: "DATETIME", nullable: false),
-                    Deadline = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    concludedAt = table.Column<DateTime>(type: "DATETIME", nullable: true),
+                    Deadline = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     createdAt = table.Column<DateTime>(type: "DATETIME", nullable: false),
-                    updatedAt = table.Column<DateTime>(type: "DATETIME", nullable: false)
+                    updatedAt = table.Column<DateTime>(type: "DATETIME", nullable: true)
                 },
                 constraints: table =>
                 {

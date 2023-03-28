@@ -1,5 +1,5 @@
 using AutoMapper;
-using Manager.API.ViewModels;
+using DefaultNamespace;
 using Manager.API.ViewModels.TasksViewModel;
 using Manager.API.ViewModels.UserViewModels;
 using Manager.Domain.Entities;
@@ -12,8 +12,11 @@ using Manager.Services.Interfaces;
 using Manager.Services.Services;
 using Microsoft.EntityFrameworkCore;
 using Task = Manager.Domain.Entities.Task;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers().AddNewtonsoftJson();
 
 // Add services to the container.
 
@@ -39,14 +42,15 @@ void AutoMapperDependenceInjection()
         cfg.CreateMap<Task, CreateTaskDto>().ReverseMap();
         cfg.CreateMap<Task, RemoveTaskDto>().ReverseMap();
         cfg.CreateMap<CreateTaskViewModel, CreateTaskDto>().ReverseMap();
+        cfg.CreateMap<UpdateTaskViewModel, TasksDTO>().ReverseMap();
     });
     
     builder.Services.AddSingleton(autoMapperConfig.CreateMapper());
 }
 
 builder.Services.AddDbContext<ManagerContext>(options =>
-    options.UseMySql("server=localhost;user id=informatica;password=Lab@inf019;database=ToDo",
-        Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.30-mysql")));
+    options.UseMySql("server=localhost;user id=root;password=Lab@inf019;database=ToDo",
+        Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.30-mysql"), mySqlOptions => mySqlOptions.EnableRetryOnFailure()));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
