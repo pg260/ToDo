@@ -1,6 +1,7 @@
 using AutoMapper;
 using Manager.Core.Exceptions;
 using Manager.Infra.Interfaces;
+using Manager.Infra.Repositories;
 using Manager.Services.DTO.Tasks;
 using Manager.Services.Interfaces;
 
@@ -73,17 +74,17 @@ public class TasksServices : ITaskService
         }
     }
 
-    public async Task Remove(RemoveTaskDto tasksDto)
+    public async Task Remove(Guid id, Guid userId)
     {
         try
         {
-            VerificandoTasksUsuario(tasksDto.UserId);
+            VerificandoTasksUsuario(userId);
             
-            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(tasksDto.UserId);
+            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(userId);
         
             foreach (var tasks in tasksThisUser)
             {
-                if(tasks.Id == tasksDto.Id)
+                if(tasks.Id == id)
                     await _taskRepository.Remove(tasks.Id);
             
             }

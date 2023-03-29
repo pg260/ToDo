@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "W50Kz/eW+NmXNt/nFuevgLdo7MFprgDk5A2YgzoP5sQ7sFNZ4/NTlRC4VE3uMM9H5VQDoPm89Ve4xGlAf/lmKA==",
+  "dgSpecHash": "j355VzYYsblHM06mOP5G5+lAuqzfPj+rlOBH88fyajnaNVsnT8NONW5MbiDliYhcO3MKxrpG5ooKl/nJrLw5/Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\GUSTAVO\\Desktop\\ToDo\\ToDo\\src\\Manager.Core\\Manager.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GUSTAVO\\.nuget\\packages\\json.net\\1.0.33\\json.net.1.0.33.nupkg.sha512",
+    "C:\\Users\\GUSTAVO\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\GUSTAVO\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\GUSTAVO\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.5.0\\swashbuckle.aspnetcore.annotations.6.5.0.nupkg.sha512",
+    "C:\\Users\\GUSTAVO\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\GUSTAVO\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\GUSTAVO\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.13\\microsoft.netcore.app.ref.6.0.13.nupkg.sha512",
     "C:\\Users\\GUSTAVO\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.13\\microsoft.windowsdesktop.app.ref.6.0.13.nupkg.sha512",
     "C:\\Users\\GUSTAVO\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.13\\microsoft.aspnetcore.app.ref.6.0.13.nupkg.sha512"

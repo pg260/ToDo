@@ -8,7 +8,7 @@ public interface ITaskService
 
     Task<TasksDTO> Update(TasksDTO tasksDto);
     
-    Task Remove(RemoveTaskDto removeTaskDto);
+    Task Remove(Guid id, Guid userId);
     Task<TasksDTO> Get(Guid id, Guid userId);
     Task<List<TasksDTO>> SearchByConcluded(bool concluded, Guid id);
     Task<List<TasksDTO>> SearchByUser(Guid id);

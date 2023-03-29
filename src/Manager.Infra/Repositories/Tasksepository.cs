@@ -29,10 +29,11 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
     {
         try
         {
-            var entity = await _context.Set<Task>().FindAsync(obj.Id);
-            _context.Entry(entity).CurrentValues.SetValues(obj);
+            await using var context = new ManagerContext();
+            var entity = await context.Set<Task>().FindAsync(obj.Id);
+            context.Entry(entity).CurrentValues.SetValues(obj);
         
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
             return obj;
         }
@@ -44,7 +45,8 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
 
     public virtual async Task<bool> Remove(Guid id)
     {
-        var obj = await _context.Set<Task>().SingleOrDefaultAsync(x => x.Id == id);
+        await using var context = new ManagerContext();
+        var obj = await context.Set<Task>().SingleOrDefaultAsync(x => x.Id == id);
 
         if (obj == null) return false;
         
@@ -54,18 +56,20 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
         return true;
     }
 
-    public async Task<List<Task>> SearchByConcluded(bool concluded, Guid id)
+    public async Task<List<Task>> SearchByConcluded(bool concluded, Guid userid)
     {
         return await _context.Tasks
-            .Where(x => x.UserId == id && x.Concluded == concluded)
+            .Where(x => x.UserId == userid && x.Concluded == concluded)
             .AsNoTracking()
             .ToListAsync();
     }
 
-    public async Task<List<Task>> SearchByUser(Guid userId)
+    public async Task<List<Task>> SearchByUser(Guid userid)
     {
-        return await _context.Tasks
-            .Where(x => x.UserId == userId)
+        await using var context = new ManagerContext();
+        
+        return await context.Tasks
+            .Where(x => x.UserId == userid)
             .AsNoTracking()
             .ToListAsync();
     }

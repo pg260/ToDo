@@ -201,3 +201,4 @@ C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.API\bin\Debug\net6.0\Microsoft.As
 C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.API\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.API\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll
