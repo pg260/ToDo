@@ -22,7 +22,7 @@ public class ManagerContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=Lab@inf019;database=ToDo",
+            optionsBuilder.UseMySql("server=localhost;user id=informatica;password=Lab@inf019;database=ToDo",
                 Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.32-mysql"), mySqlOptions => mySqlOptions.EnableRetryOnFailure());       
         }
     }

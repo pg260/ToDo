@@ -50,7 +50,7 @@ void AutoMapperDependenceInjection()
 }
 
 builder.Services.AddDbContext<ManagerContext>(options =>
-    options.UseMySql("server=localhost;user id=root;password=Lab@inf019;database=ToDo",
+    options.UseMySql("server=localhost;user id=informatica;password=Lab@inf019;database=ToDo",
         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.30-mysql"), mySqlOptions => mySqlOptions.EnableRetryOnFailure()));
 
 builder.Services.AddControllers();

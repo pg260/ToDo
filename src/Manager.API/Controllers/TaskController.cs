@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using DefaultNamespace;
 using Manager.API.ViewModels.TasksViewModel;
@@ -6,8 +7,6 @@ using Manager.Core.Exceptions;
 using Manager.Services.DTO.Tasks;
 using Manager.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace Manager.API.Controllers;
 
@@ -24,13 +23,12 @@ public class TaskController : ControllerBase
     private readonly IMapper _mapper;
     
     [HttpPost]
-    [Route(template: "/api/v1/Tasks/CreateTask/{UserId}/{Name}")]
-    public async Task<IActionResult> Create(Guid UserId, string Name, [FromQuery(Name = "Description"), SwaggerParameter(Required = false)] string? Description = null, 
-        [FromQuery(Name = "Deadline"), SwaggerParameter(Required = false)] DateTime? Deadline = null)
+    [Route(template: "/api/v1/Tasks/CreateTask")]
+    public async Task<IActionResult> Create([FromForm]CreateTaskViewModel createTaskViewModel)
     {
         try
         {
-            var taskDto = new CreateTaskDto(userId: UserId, name: Name, description: Description, deadline: Deadline);
+            var taskDto = _mapper.Map<CreateTaskDto>(createTaskViewModel);
             var taskCreated = await _taskService.Create(tasksDto: taskDto);
             return Ok(value: new ResultViewModel 
             { 
@@ -47,7 +45,7 @@ public class TaskController : ControllerBase
     
     [HttpPut]
     [Route("/api/v1/Task/UpdateTask")]
-    public async Task<IActionResult> Update([FromBody] UpdateTaskViewModel updateTaskViewModel)
+    public async Task<IActionResult> Update([FromForm] UpdateTaskViewModel updateTaskViewModel)
     {
         try
         {
@@ -55,7 +53,7 @@ public class TaskController : ControllerBase
             var taskUpdated = await _taskService.Update(taskDto);
             return Ok(new ResultViewModel
             {
-                Message = "Usuáio modificado com sucesso.",
+                Message = "Task modificado com sucesso.",
                 Sucess = true,
                 Data = taskUpdated
             });
@@ -67,16 +65,17 @@ public class TaskController : ControllerBase
     }
     
     [HttpDelete]
-    [Route("/api/v1/Task/RemoveTask/{id}/{userId}")]
-    public async Task<IActionResult> Remove(Guid id, Guid userId)
+    [Route("/api/v1/Task/RemoveTask")]
+    public async Task<IActionResult> Remove([FromForm] DeleteTaskViewModel deleteTaskViewModel)
     {
         try
         {
-            await _taskService.Remove(id, userId);
+            var dto = _mapper.Map<RemoveTaskDto>(deleteTaskViewModel);
+            await _taskService.Remove(dto);
 
             return Ok(new ResultViewModel
             {
-                Message = "Usuário deletado com sucesso",
+                Message = "Task deletado com sucesso",
                 Sucess = true,
                 Data = null
             });
@@ -85,5 +84,64 @@ public class TaskController : ControllerBase
         {
             throw new DomainExceptions("Falha na remoção do usuário, por favor contate o suporte.");
         }
+    }
+
+    [HttpGet]
+    [Route(("/api/v1/Task/GetTask"))]
+    public async Task<IActionResult> Get([Required] Guid userid, [Required] Guid id)
+    {
+        try
+        {
+            var task = await _taskService.Get( id, userid);
+
+            if (task == null)
+            {
+                return Ok(new ResultViewModel
+                {
+                    Message = "Não existe nenhuma task com essas informações.",
+                    Sucess = true,
+                    Data = null
+                });
+            }
+            
+            return Ok(new ResultViewModel
+            {
+                Message = "Pesquisa realizada com sucesso.",
+                Sucess = true,
+                Data = task
+            });
+        }
+        catch (DomainExceptions)
+        {
+            throw new DomainExceptions("Algum erro aconteceu, contate o suporte.");
+        }
+    }
+    
+    [HttpGet]
+    [Route("/api/v1/Tasks/GetAllTasks/{userid}")]
+    public async Task<IActionResult> GetAllTasks(Guid userid)
+    {
+        List<TasksDTO> allTasks = await _taskService.SearchByUser(userid);
+
+        return Ok(new ResultViewModel
+        {
+            Message = "Pesquisa realizada com sucesso.",
+            Sucess = true,
+            Data = allTasks
+        });
+    }
+
+    [HttpGet]
+    [Route("/api/v1/Tasks/SearchByConcluded")]
+    public async Task<IActionResult> SearchBtConcluded([Required] bool concluded, [Required] Guid userid)
+    {
+        List<TasksDTO> allTasks = await _taskService.SearchByConcluded(concluded, userid);
+        
+        return Ok(new ResultViewModel
+        {
+            Message = "Pesquisa realizada com sucesso.",
+            Sucess = true,
+            Data = allTasks
+        });
     }
 }

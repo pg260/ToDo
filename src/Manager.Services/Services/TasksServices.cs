@@ -4,6 +4,7 @@ using Manager.Infra.Interfaces;
 using Manager.Infra.Repositories;
 using Manager.Services.DTO.Tasks;
 using Manager.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 
 namespace Manager.Services.Services;
 
@@ -26,8 +27,10 @@ public class TasksServices : ITaskService
             
             foreach (var tasks in tasksThisUser)
             {
-                if(tasks.Name == tasksDto.Name)
-                    throw new DomainExceptions("Não pode ter duas tasks com nomes iguais.");
+                if (tasks.Name == tasksDto.Name)
+                {
+                    throw new Exception("Não é possível criar duas tasks com o mesmo nome.");
+                }
             }
 
             var task = _mapper.Map<Domain.Entities.Task>(tasksDto);
@@ -57,9 +60,9 @@ public class TasksServices : ITaskService
             }
             
             var task = _mapper.Map<Domain.Entities.Task>(tasksDto);
-            task.UpdatedAt = DateTime.Now;
             task.CreatedAt = taskExists.CreatedAt;
-            
+            // task.UpdatedAt = DateTime.Now;
+
             if (task.Concluded && !taskExists.Concluded)
                 task.ConcludedAt = DateTime.Now;
             
@@ -74,17 +77,17 @@ public class TasksServices : ITaskService
         }
     }
 
-    public async Task Remove(Guid id, Guid userId)
+    public async Task Remove(RemoveTaskDto removeTaskDto)
     {
         try
         {
-            VerificandoTasksUsuario(userId);
-            
-            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(userId);
+            VerificandoTasksUsuario(removeTaskDto.UserId);
+
+            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(removeTaskDto.UserId);
         
             foreach (var tasks in tasksThisUser)
             {
-                if(tasks.Id == id)
+                if(tasks.Id == removeTaskDto.Id)
                     await _taskRepository.Remove(tasks.Id);
             
             }
@@ -97,37 +100,31 @@ public class TasksServices : ITaskService
 
     public async Task<TasksDTO> Get(Guid id, Guid userId)
     {
-        try
+
+        VerificandoTasksUsuario(userId);
+
+        var taskExists = await _taskRepository.Get(id, userId);
+
+        if (taskExists == null)
         {
-            VerificandoTasksUsuario(userId);
-
-            var taskExists = await _taskRepository.Get(id, userId);
-
-            if (taskExists == null)
-            {
-                throw new DomainExceptions("Task não encontrada, veja se o nome digitado está correto.");
-            }
+            throw new DomainExceptions("Task não encontrada, veja se o nome digitado está correto.");
+        }
             
-            return _mapper.Map<TasksDTO>(taskExists);
-        }
-        catch (DomainExceptions)
-        {
-            throw new DomainExceptions("Veja se os dados estão digitados corretamente.");
-        }
+        return _mapper.Map<TasksDTO>(taskExists);
     }
 
-    public async Task<List<TasksDTO>> SearchByConcluded(bool concluded, Guid id)
+    public async Task<List<TasksDTO>> SearchByConcluded(bool concluded, Guid userid)
     {
         try
         {
-            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(id);
+            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(userid);
 
             if (tasksThisUser == null)
             {
                 throw new DomainExceptions("Esse usuário não possui tasks.");
             }
 
-            var taskExists = await _taskRepository.SearchByConcluded(concluded, id);
+            var taskExists = await _taskRepository.SearchByConcluded(concluded, userid);
 
             if (taskExists == null)
             {

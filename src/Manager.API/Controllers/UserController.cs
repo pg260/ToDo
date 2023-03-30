@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using Manager.API.ViewModels.UserViewModels;
 using Manager.Core.Exceptions;
@@ -22,7 +23,7 @@ public class UserController : ControllerBase
     
     [HttpPost]
     [Route("/api/v1/Users/CreateUser")]
-    public async Task<IActionResult> Create([FromBody] CreateUserViewModel userViewModel)
+    public async Task<IActionResult> Create([FromForm] CreateUserViewModel userViewModel)
     {
         try
         {
@@ -43,7 +44,7 @@ public class UserController : ControllerBase
 
     [HttpPut]
     [Route("/api/v1/Users/UpdateUser")]
-    public async Task<IActionResult> Update([FromBody] UpdateViewModel userViewModel)
+    public async Task<IActionResult> Update([FromForm] UpdateViewModel userViewModel)
     {
         try
         {
@@ -136,7 +137,7 @@ public class UserController : ControllerBase
 
     [HttpGet]
     [Route("/api/v1/Users/SearchByName")]
-    public async Task<IActionResult> SearchByName(string name)
+    public async Task<IActionResult> SearchByName([Required] string name)
     {
         try
         {
@@ -157,7 +158,7 @@ public class UserController : ControllerBase
     
     [HttpGet]
     [Route("/api/v1/Users/SearchByEmail")]
-    public async Task<IActionResult> SearchByEmail(string email)
+    public async Task<IActionResult> SearchByEmail([Required] string email)
     {
         try
         {
@@ -178,7 +179,7 @@ public class UserController : ControllerBase
     
     [HttpGet]
     [Route("/api/v1/Users/GetByEmail")]
-    public async Task<IActionResult> GetByEmail(string email)
+    public async Task<IActionResult> GetByEmail([Required] string email)
     {
         try
         {
