@@ -4,6 +4,7 @@ using Manager.API.ViewModels.UserViewModels;
 using Manager.Core.Exceptions;
 using Manager.Services.DTO.User;
 using Manager.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Manager.API.Controllers;
@@ -44,11 +45,13 @@ public class UserController : ControllerBase
 
     [HttpPut]
     [Route("/api/v1/Users/UpdateUser")]
+    [Authorize]
     public async Task<IActionResult> Update([FromForm] UpdateViewModel userViewModel)
     {
         try
         {
             var userDto = _mapper.Map<UpdateUserDto>(userViewModel);
+            userDto.Id = Guid.Parse(User.Identity.Name);
             var userUpdated = await _userService.Update(userDto);
             return Ok(new ResultViewModel
             {
@@ -64,12 +67,13 @@ public class UserController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("/api/v1/users/RemoveUser/{id}")]
-    public async Task<IActionResult> Remove(Guid id)
+    [Route("/api/v1/users/RemoveUser")]
+    [Authorize]
+    public async Task<IActionResult> Remove()
     {
         try
         {
-            await _userService.Remove(id);
+            await _userService.Remove(Guid.Parse(User.Identity.Name));
 
             return Ok(new ResultViewModel
             {
@@ -85,12 +89,13 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    [Route("/api/v1/Users/GetUser/{id}")]
-    public async Task<IActionResult> Get(Guid id)
+    [Route("/api/v1/Users/GetUser")]
+    [Authorize]
+    public async Task<IActionResult> GetUser()
     {
         try
         {
-            var userDto = await _userService.Get(id);
+            var userDto = await _userService.Get(Guid.Parse(User.Identity.Name));
 
             if (userDto == null)
             {
@@ -116,7 +121,8 @@ public class UserController : ControllerBase
 
     [HttpGet]
     [Route("/api/v1/Users/GetAllUsers")]
-    public async Task<IActionResult> Get()
+    [Authorize]
+    public async Task<IActionResult> GetAllUser()
     {
         try
         {
@@ -137,6 +143,7 @@ public class UserController : ControllerBase
 
     [HttpGet]
     [Route("/api/v1/Users/SearchByName")]
+    [Authorize]
     public async Task<IActionResult> SearchByName([Required] string name)
     {
         try
@@ -158,6 +165,7 @@ public class UserController : ControllerBase
     
     [HttpGet]
     [Route("/api/v1/Users/SearchByEmail")]
+    [Authorize]
     public async Task<IActionResult> SearchByEmail([Required] string email)
     {
         try
@@ -179,6 +187,7 @@ public class UserController : ControllerBase
     
     [HttpGet]
     [Route("/api/v1/Users/GetByEmail")]
+    [Authorize]
     public async Task<IActionResult> GetByEmail([Required] string email)
     {
         try

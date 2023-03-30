@@ -6,6 +6,7 @@ using Manager.API.ViewModels.UserViewModels;
 using Manager.Core.Exceptions;
 using Manager.Services.DTO.Tasks;
 using Manager.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Manager.API.Controllers;
@@ -24,11 +25,13 @@ public class TaskController : ControllerBase
     
     [HttpPost]
     [Route(template: "/api/v1/Tasks/CreateTask")]
+    [Authorize]
     public async Task<IActionResult> Create([FromForm]CreateTaskViewModel createTaskViewModel)
     {
         try
         {
             var taskDto = _mapper.Map<CreateTaskDto>(createTaskViewModel);
+            taskDto.UserId = Guid.Parse(User.Identity.Name);
             var taskCreated = await _taskService.Create(tasksDto: taskDto);
             return Ok(value: new ResultViewModel 
             { 
@@ -45,11 +48,13 @@ public class TaskController : ControllerBase
     
     [HttpPut]
     [Route("/api/v1/Task/UpdateTask")]
+    [Authorize]
     public async Task<IActionResult> Update([FromForm] UpdateTaskViewModel updateTaskViewModel)
     {
         try
         {
             var taskDto = _mapper.Map<TasksDTO>(updateTaskViewModel);
+            taskDto.UserId = Guid.Parse(User.Identity.Name);
             var taskUpdated = await _taskService.Update(taskDto);
             return Ok(new ResultViewModel
             {
@@ -66,11 +71,13 @@ public class TaskController : ControllerBase
     
     [HttpDelete]
     [Route("/api/v1/Task/RemoveTask")]
+    [Authorize]
     public async Task<IActionResult> Remove([FromForm] DeleteTaskViewModel deleteTaskViewModel)
     {
         try
         {
             var dto = _mapper.Map<RemoveTaskDto>(deleteTaskViewModel);
+            dto.UserId = Guid.Parse(User.Identity.Name);
             await _taskService.Remove(dto);
 
             return Ok(new ResultViewModel
@@ -88,11 +95,12 @@ public class TaskController : ControllerBase
 
     [HttpGet]
     [Route(("/api/v1/Task/GetTask"))]
-    public async Task<IActionResult> Get([Required] Guid userid, [Required] Guid id)
+    [Authorize]
+    public async Task<IActionResult> Get([Required] Guid id)
     {
         try
         {
-            var task = await _taskService.Get( id, userid);
+            var task = await _taskService.Get( id, Guid.Parse(User.Identity.Name));
 
             if (task == null)
             {
@@ -118,10 +126,11 @@ public class TaskController : ControllerBase
     }
     
     [HttpGet]
-    [Route("/api/v1/Tasks/GetAllTasks/{userid}")]
-    public async Task<IActionResult> GetAllTasks(Guid userid)
+    [Route("/api/v1/Tasks/GetAllTasks")]
+    [Authorize]
+    public async Task<IActionResult> GetAllTasks()
     {
-        List<TasksDTO> allTasks = await _taskService.SearchByUser(userid);
+        List<TasksDTO> allTasks = await _taskService.SearchByUser(Guid.Parse(User.Identity.Name));
 
         return Ok(new ResultViewModel
         {
@@ -133,9 +142,10 @@ public class TaskController : ControllerBase
 
     [HttpGet]
     [Route("/api/v1/Tasks/SearchByConcluded")]
-    public async Task<IActionResult> SearchBtConcluded([Required] bool concluded, [Required] Guid userid)
+    [Authorize]
+    public async Task<IActionResult> SearchBtConcluded([Required] bool concluded)
     {
-        List<TasksDTO> allTasks = await _taskService.SearchByConcluded(concluded, userid);
+        List<TasksDTO> allTasks = await _taskService.SearchByConcluded(concluded, Guid.Parse(User.Identity.Name));
         
         return Ok(new ResultViewModel
         {
