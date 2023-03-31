@@ -20,7 +20,7 @@ public class AuthController : ControllerBase
     
     [HttpPost]
     [Route("login")]
-    public async Task<ActionResult<dynamic>> Authenticate([FromForm] [Required] string email, [Required] string password)
+    public async Task<ActionResult<dynamic>> Authenticate([Required] string email, [Required] string password)
     {
         var user = await _authRepository.Get(email, password);
 

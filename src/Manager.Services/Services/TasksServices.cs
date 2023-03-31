@@ -60,12 +60,9 @@ public class TasksServices : ITaskService
             }
             
             var task = _mapper.Map<Domain.Entities.Task>(tasksDto);
-            task.CreatedAt = taskExists.CreatedAt;
-            // task.UpdatedAt = DateTime.Now;
 
-            if (task.Concluded && !taskExists.Concluded)
-                task.ConcludedAt = DateTime.Now;
-            
+            task = VerificandoPropriedades(taskExists, task);
+
             task.Validate();
     
             var taskUpdated = await _taskRepository.Update(task);
@@ -156,5 +153,25 @@ public class TasksServices : ITaskService
         {
             throw new DomainExceptions("Esse usuário não possui tasks.");
         }
+    }
+
+    public Domain.Entities.Task VerificandoPropriedades(Domain.Entities.Task tasksDto, Domain.Entities.Task task)
+    {
+        task.CreatedAt = tasksDto.CreatedAt;
+        task.UpdatedAt = DateTime.Now;
+
+        if (task.Concluded && !tasksDto.Concluded)
+            task.ConcludedAt = DateTime.Now;
+        
+        if (task.Name == null)
+            task.Name = tasksDto.Name;
+
+        if (task.Description == null)
+            task.Description = tasksDto.Description;
+
+        if (task.ConcludedAt == null && task.Concluded)
+            task.ConcludedAt = tasksDto.ConcludedAt;
+
+        return task;
     }
 }

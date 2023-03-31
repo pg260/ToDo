@@ -83,11 +83,11 @@ builder.Services.AddAuthentication(x =>
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ToDo", Version = "v1", Description = "Desenvolvido por pg"});
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Name = "Authorization",
-        Description = "JWT Authorization header using the Bearer scheme.",
+        Name = "Autorização",
+        Description = "Digite somente o token de acesso.",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,

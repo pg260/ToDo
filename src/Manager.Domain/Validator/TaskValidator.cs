@@ -28,12 +28,6 @@ public class TaskValidator : AbstractValidator<Task>
             .WithMessage("O id de usuário não pode ser vazio");
         
         RuleFor(x => x.Name)
-            .NotNull()
-            .WithMessage("O nome não pode ser nulo")
-
-            .NotEmpty()
-            .WithMessage("O nome não pode ser vazio")
-
             .MaximumLength(50)
             .WithMessage("O nome não pode passar de 50 caracteres");
     }

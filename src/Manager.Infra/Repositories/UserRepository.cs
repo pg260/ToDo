@@ -3,6 +3,7 @@ using Manager.Domain.Entities;
 using Manager.Infra.Context;
 using Manager.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Task = Manager.Domain.Entities.Task;
 
 namespace Manager.Infra.Repositories;
 
@@ -18,9 +19,18 @@ public class UserRepository : BaseRepository<User>, IUserRepository
     public virtual async Task<bool> Remove(Guid id)
     {
         var obj = await _context.Set<User>().SingleOrDefaultAsync(x => x.Id == id);
-
+        
         if (obj == null) return false;
         
+        List<Task> tasks = await _context.Tasks
+            .Where(y => y.UserId == id)
+            .ToListAsync();
+
+        foreach (var task in tasks)
+        {
+            _context.Remove(task);
+        }
+
         _context.Remove(obj);
         await _context.SaveChangesAsync();
 
