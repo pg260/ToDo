@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Security;
 using Manager.Infra.Interfaces;
 using Manager.Infra.Repositories;
 using Manager.Services.Interfaces;
@@ -28,13 +29,38 @@ public class AuthController : ControllerBase
             return NotFound(new { message = "Usuário ou senha inválido." });
 
         var token = _authServices.GenerateToken(user);
+        var refreshToken = _authServices.GenerateRefreshToken();
+        _authServices.SaveRefreshToken(user.Id.ToString(), refreshToken);
 
         user.Password = "";
 
         return new
         {
             user = user,
-            token = token
+            token = token,
+            refreshToken = refreshToken
         };
+    }
+
+    [HttpPost]
+    [Route("refresh")]
+    public IActionResult Refresh(string token, string refreshToken)
+    {
+        var principal = _authServices.GetPrincipalFromExpiredToken(token);
+        var id = principal.Identity.Name;
+        var savedRefreshToken = _authServices.GetRefreshToken(id);
+        if (savedRefreshToken != refreshToken)
+            throw new SecurityException("Token inválido");
+
+        var newJwtToken = _authServices.GenerateToken(principal.Claims);
+        var newRefreshToken = _authServices.GenerateRefreshToken();
+        _authServices.DeleteRefreshToken(id, refreshToken);
+        _authServices.SaveRefreshToken(id, newRefreshToken);
+
+        return new ObjectResult(new
+        {
+            token = newJwtToken,
+            refreshToken = newRefreshToken
+        });
     }
 }
