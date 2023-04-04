@@ -6,7 +6,7 @@ namespace Manager.Services.Interfaces;
 
 public interface IAuthService
 {
-    Task<User> Get(string email, string password);
+    Task<User> Get(string email);
 
     public string GenerateToken(User user);
 

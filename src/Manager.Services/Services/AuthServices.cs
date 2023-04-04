@@ -23,9 +23,9 @@ public class AuthServices : IAuthService
     private readonly IAuthRepository _authRepository;
     
     
-    public async Task<User> Get(string email, string password)
+    public async Task<User> Get(string email)
     {
-        var user = await _authRepository.Get(email, password);
+        var user = await _authRepository.Get(email);
         
         return _mapper.Map<User>(user);
     }
@@ -112,5 +112,4 @@ public class AuthServices : IAuthService
         var item = _refreshTokens.FirstOrDefault(x => x.Item1 == id);
         _refreshTokens.Remove(item);
     }
-    
 }

@@ -4,5 +4,5 @@ namespace Manager.Infra.Interfaces;
 
 public interface IAuthRepository
 {
-    Task<User> Get(string email, string password);
+    Task<User> Get(string email);
 }

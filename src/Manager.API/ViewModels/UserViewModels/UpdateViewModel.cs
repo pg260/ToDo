@@ -18,15 +18,15 @@ public class UpdateViewModel
     [Required(ErrorMessage = "A senha não pode ser vazia.")]
     [MinLength(6, ErrorMessage = "A senha deve ter no mínimo 6 caracteres.")]
     [MaxLength(40, ErrorMessage = "A senha deve ter no máximo 40 caracteres.")]
+    public string Password { get; set; }
+    
+    [Required(ErrorMessage = "A senha não pode ser vazia.")]
+    [MinLength(6, ErrorMessage = "A senha deve ter no mínimo 6 caracteres.")]
+    [MaxLength(40, ErrorMessage = "A senha deve ter no máximo 40 caracteres.")]
     public string NewPassword { get; set; }
     
     [Required(ErrorMessage = "A senha não pode ser vazia.")]
     [MinLength(6, ErrorMessage = "A senha deve ter no mínimo 6 caracteres.")]
     [MaxLength(40, ErrorMessage = "A senha deve ter no máximo 40 caracteres.")]
     public string NewPasswordConfirme { get; set; }
-    
-    [Required(ErrorMessage = "A senha não pode ser vazia.")]
-    [MinLength(6, ErrorMessage = "A senha deve ter no mínimo 6 caracteres.")]
-    [MaxLength(40, ErrorMessage = "A senha deve ter no máximo 40 caracteres.")]
-    public string Password { get; set; }
 }

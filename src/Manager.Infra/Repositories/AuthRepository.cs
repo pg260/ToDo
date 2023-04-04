@@ -3,6 +3,7 @@ using Manager.Domain.Entities;
 using Manager.Infra.Context;
 using Manager.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Task = Manager.Domain.Entities.Task;
 
 namespace Manager.Infra.Repositories;
 
@@ -17,16 +18,15 @@ public class AuthRepository : IAuthRepository
     {
         _context = context;
     }
-
+    
     private readonly ManagerContext _context;
     
-    public async Task<User> Get(string email, string password)
+    public async Task<User> Get(string email)
     {
-        await using var context = new ManagerContext();
+        var context = new ManagerContext();
         return await context.Set<User>()
-            .Where(x => x.Email == email && x.Password == password)
+            .Where(x => x.Email == email)
             .AsNoTracking()
-            .SingleOrDefaultAsync() ?? throw new DomainExceptions("Esse login/senha não existe.");
-
+            .SingleOrDefaultAsync() ?? throw new InvalidOperationException();
     }
 }

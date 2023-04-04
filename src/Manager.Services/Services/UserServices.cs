@@ -28,7 +28,11 @@ public class UserServices : IUserService
             throw new DomainExceptions("Esse email já está cadastrado.");
         }
 
+        HashServices hashServices = new();
+        var hash = hashServices.GenerateHash(userDto.Password);
+
         var user = _mapper.Map<User>(userDto);
+        user.Password = hash;
         user.Validate();
 
         var userCreated = await _userRepository.Create(user);
@@ -44,8 +48,10 @@ public class UserServices : IUserService
         {
             throw new DomainExceptions("Usuário não encontrado");
         }
-        
-        if (userExists.Password != userDto.Password)
+
+        HashServices hashServices = new();
+
+        if (!hashServices.VerifyPassword(userDto.Password, userExists.Password))
         {
             throw new DomainExceptions("Senha incorreta, verifique e tente novamente");
         }
@@ -55,10 +61,12 @@ public class UserServices : IUserService
             throw new DomainExceptions("Senhas diferentes, verifique e tente novamente");
         }
         
+        var hash = hashServices.GenerateHash(userDto.Password);
+        
         var user = _mapper.Map<User>(userDto);
+        user.Password = hash;
         user.Validate();
-
-        user.Password = userDto.NewPassword;
+        
         var userUpdated = await _userRepository.Update(user);
 
         return _mapper.Map<UpdateUserDto>(userUpdated);
@@ -103,4 +111,5 @@ public class UserServices : IUserService
 
         return _mapper.Map<UserDTO>(user);
     }
+
 }

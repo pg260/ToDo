@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Manager.Infra.Migrations
 {
     [DbContext(typeof(ManagerContext))]
-    [Migration("20230328140630_Initial")]
+    [Migration("20230404123621_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -40,7 +40,7 @@ namespace Manager.Infra.Migrations
                         .HasColumnType("DATETIME")
                         .HasColumnName("concludedAt");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("DATETIME")
                         .HasColumnName("createdAt");
 
@@ -93,8 +93,7 @@ namespace Manager.Infra.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("VARCHAR(40)")
+                        .HasColumnType("VARCHAR(86)")
                         .HasColumnName("password");
 
                     b.HasKey("Id");

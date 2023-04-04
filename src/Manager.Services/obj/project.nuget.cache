@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "s6lV/NOYJZqZWdj6mMFM0Ic7Lnb6Svj+LddnhqPwmUiqdj8SYQgmusyGAQiaHeffQfKCARXFwTjJ9yuBkHOitw==",
+  "dgSpecHash": "2ZHU7f8Tozbuvsbe2Qy+5GsGyBDTVLJN5eevBk0fbYAvciN4zB9W6AOR4/ou4sWtP1XSAZs9RL9Sr262rfNBKQ==",
   "success": true,
   "projectFilePath": "/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Services/Manager.Services.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,8 @@
     "/home/pg/.nuget/packages/k4os.compression.lz4/1.2.6/k4os.compression.lz4.1.2.6.nupkg.sha512",
     "/home/pg/.nuget/packages/k4os.compression.lz4.streams/1.2.6/k4os.compression.lz4.streams.1.2.6.nupkg.sha512",
     "/home/pg/.nuget/packages/k4os.hash.xxhash/1.0.6/k4os.hash.xxhash.1.0.6.nupkg.sha512",
+    "/home/pg/.nuget/packages/konscious.security.cryptography.argon2/1.3.0/konscious.security.cryptography.argon2.1.3.0.nupkg.sha512",
+    "/home/pg/.nuget/packages/konscious.security.cryptography.blake2/1.1.0/konscious.security.cryptography.blake2.1.1.0.nupkg.sha512",
     "/home/pg/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/6.0.15/microsoft.aspnetcore.authentication.jwtbearer.6.0.15.nupkg.sha512",
     "/home/pg/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/pg/.nuget/packages/microsoft.entityframeworkcore/7.0.4/microsoft.entityframeworkcore.7.0.4.nupkg.sha512",

@@ -222,3 +222,5 @@ C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.API/obj/Debug/net6.0/ref/Manager.
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.API/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.API/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.API/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.API/bin/Debug/net6.0/Konscious.Security.Cryptography.Argon2.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.API/bin/Debug/net6.0/Konscious.Security.Cryptography.Blake2.dll

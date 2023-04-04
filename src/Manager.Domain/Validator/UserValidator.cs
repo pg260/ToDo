@@ -37,7 +37,7 @@ public class UserValidator : AbstractValidator<User>
             .MinimumLength(6)
             .WithMessage("A senha deve ter no mínimo 6 caracteres")
 
-            .MaximumLength(40)
+            .MaximumLength(88)
             .WithMessage("A senha deve ter no máximo 40 caracteres");
 
         RuleFor(x => x.Email)

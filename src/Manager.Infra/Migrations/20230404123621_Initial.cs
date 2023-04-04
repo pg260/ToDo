@@ -29,7 +29,7 @@ namespace Manager.Infra.Migrations
                     concluded = table.Column<bool>(type: "TINYINT(1)", nullable: false),
                     concludedAt = table.Column<DateTime>(type: "DATETIME", nullable: true),
                     Deadline = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    createdAt = table.Column<DateTime>(type: "DATETIME", nullable: false),
+                    createdAt = table.Column<DateTime>(type: "DATETIME", nullable: true),
                     updatedAt = table.Column<DateTime>(type: "DATETIME", nullable: true)
                 },
                 constraints: table =>
@@ -49,7 +49,7 @@ namespace Manager.Infra.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     email = table.Column<string>(type: "VARCHAR(60)", maxLength: 60, nullable: false, collation: "utf8mb4_0900_ai_ci")
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    password = table.Column<string>(type: "VARCHAR(40)", maxLength: 40, nullable: false, collation: "utf8mb4_0900_ai_ci")
+                    password = table.Column<string>(type: "VARCHAR(86)", nullable: false, collation: "utf8mb4_0900_ai_ci")
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>

@@ -26,9 +26,7 @@ public class UserController : ControllerBase
     [Route("/api/v1/Users/CreateUser")]
     public async Task<IActionResult> Create([FromForm] CreateUserViewModel userViewModel)
     {
-        try
-        {
-            var userDto = _mapper.Map<CreateUserDto>(userViewModel);
+        var userDto = _mapper.Map<CreateUserDto>(userViewModel);
             var userCreated = await _userService.Create(userDto);
             return Ok(new ResultViewModel 
             { 
@@ -36,11 +34,6 @@ public class UserController : ControllerBase
                 Sucess = true, 
                 Data = userCreated
             });
-        }
-        catch (DomainExceptions)
-        {
-            throw new DomainExceptions("Falha na criação do usuário, por favor contate o suporte.");
-        }
     }
 
     [HttpPut]
@@ -48,9 +41,7 @@ public class UserController : ControllerBase
     [Authorize]
     public async Task<IActionResult> Update([FromForm] UpdateViewModel userViewModel)
     {
-        try
-        {
-            var userDto = _mapper.Map<UpdateUserDto>(userViewModel);
+        var userDto = _mapper.Map<UpdateUserDto>(userViewModel);
             userDto.Id = Guid.Parse(User.Identity.Name);
             var userUpdated = await _userService.Update(userDto);
             return Ok(new ResultViewModel
@@ -59,21 +50,14 @@ public class UserController : ControllerBase
                 Sucess = true,
                 Data = userUpdated
             });
-        }
-        catch (DomainExceptions)
-        {
-            throw new DomainExceptions("Falha no update do usuário, por favor contate o suporte.");
-        }
     }
-
+    
     [HttpDelete]
     [Route("/api/v1/users/RemoveUser")]
     [Authorize]
     public async Task<IActionResult> Remove()
     {
-        try
-        {
-            await _userService.Remove(Guid.Parse(User.Identity.Name));
+        await _userService.Remove(Guid.Parse(User.Identity.Name));
 
             return Ok(new ResultViewModel
             {
@@ -81,21 +65,14 @@ public class UserController : ControllerBase
                 Sucess = true,
                 Data = null
             });
-        }
-        catch (DomainExceptions)
-        {
-            throw new DomainExceptions("Falha na remoção do usuário, por favor contate o suporte.");
-        }
     }
 
-    [HttpGet]
+        [HttpGet]
     [Route("/api/v1/Users/GetUser")]
     [Authorize]
     public async Task<IActionResult> GetUser()
     {
-        try
-        {
-            var userDto = await _userService.Get(Guid.Parse(User.Identity.Name));
+        var userDto = await _userService.Get(Guid.Parse(User.Identity.Name));
 
             if (userDto == null)
             {
@@ -112,11 +89,6 @@ public class UserController : ControllerBase
                 Sucess = true,
                 Data = userDto
             });
-        }
-        catch (DomainExceptions)
-        {
-            throw new DomainExceptions("Falha na pesquisa de usuários, por favor contate o suporte.");
-        }
     }
 
     [HttpGet]
@@ -124,8 +96,7 @@ public class UserController : ControllerBase
     [Authorize]
     public async Task<IActionResult> GetAllUser()
     {
-        try
-        {
+
             List<UserDTO> allUsers = await _userService.Get();
 
             return Ok(new ResultViewModel
@@ -134,11 +105,6 @@ public class UserController : ControllerBase
                 Sucess = true,
                 Data = allUsers
             });
-        }
-        catch (DomainExceptions)
-        {
-            throw new DomainExceptions("Falha na pesquisa de usuários, por favor contate o suporte.");
-        }
     }
 
     [HttpGet]
@@ -146,9 +112,7 @@ public class UserController : ControllerBase
     [Authorize]
     public async Task<IActionResult> SearchByName([Required] string name)
     {
-        try
-        {
-            List<UserDTO> searchUsers = await _userService.SearchByName(name);
+        List<UserDTO> searchUsers = await _userService.SearchByName(name);
 
             return Ok(new ResultViewModel
             {
@@ -156,21 +120,14 @@ public class UserController : ControllerBase
                 Sucess = true,
                 Data = searchUsers
             });
-        }
-        catch (DomainExceptions)
-        {
-            throw new DomainExceptions("Falha na pesquisa de usuários, por favor contate o suporte.");
-        }
     }
-    
+
     [HttpGet]
     [Route("/api/v1/Users/SearchByEmail")]
     [Authorize]
     public async Task<IActionResult> SearchByEmail([Required] string email)
     {
-        try
-        {
-            List<UserDTO> searchUsers = await _userService.SearchByEmail(email);
+        List<UserDTO> searchUsers = await _userService.SearchByEmail(email);
 
             return Ok(new ResultViewModel
             {
@@ -178,21 +135,14 @@ public class UserController : ControllerBase
                 Sucess = true,
                 Data = searchUsers
             });
-        }
-        catch (DomainExceptions)
-        {
-            throw new DomainExceptions("Falha na pesquisa de usuários, por favor contate o suporte.");
-        }
     }
-    
+
     [HttpGet]
     [Route("/api/v1/Users/GetByEmail")]
     [Authorize]
     public async Task<IActionResult> GetByEmail([Required] string email)
     {
-        try
-        {
-            var searchUsers = await _userService.GetByEmail(email);
+        var searchUsers = await _userService.GetByEmail(email);
 
             return Ok(new ResultViewModel
             {
@@ -200,10 +150,5 @@ public class UserController : ControllerBase
                 Sucess = true,
                 Data = searchUsers
             });
-        }
-        catch (DomainExceptions)
-        {
-            throw new DomainExceptions("Falha na pesquisa de usuários, por favor contate o suporte.");
-        }
     }
 }

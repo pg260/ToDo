@@ -30,8 +30,7 @@ public class UserMap : IEntityTypeConfiguration<User>
 
         builder.Property(x => x.Password)
             .IsRequired()
-            .HasMaxLength(40)
             .HasColumnName("password")
-            .HasColumnType("VARCHAR(40)"); 
+            .HasColumnType("VARCHAR(88)"); 
     }
 }

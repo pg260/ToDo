@@ -3,6 +3,7 @@ using System.Security;
 using Manager.Infra.Interfaces;
 using Manager.Infra.Repositories;
 using Manager.Services.Interfaces;
+using Manager.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Manager.API.Controllers;
@@ -23,9 +24,10 @@ public class AuthController : ControllerBase
     [Route("login")]
     public async Task<ActionResult<dynamic>> Authenticate([Required] string email, [Required] string password)
     {
-        var user = await _authRepository.Get(email, password);
+        var user = await _authRepository.Get(email);
 
-        if (user == null)
+        HashServices hashServices = new();
+        if(!hashServices.VerifyPassword(password, user.Password))
             return NotFound(new { message = "Usuário ou senha inválido." });
 
         var token = _authServices.GenerateToken(user);
