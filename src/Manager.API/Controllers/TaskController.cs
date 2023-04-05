@@ -112,18 +112,18 @@ public class TaskController : ControllerBase
         });
     }
 
-    [HttpGet]
-    [Route("/api/v1/Tasks/SearchByConcluded")]
-    [Authorize]
-    public async Task<IActionResult> SearchBtConcluded([Required] bool concluded)
-    {
-        List<TasksDTO> allTasks = await _taskService.SearchByConcluded(concluded, Guid.Parse(User.Identity.Name));
-        
-        return Ok(new ResultViewModel
-        {
-            Message = "Pesquisa realizada com sucesso.",
-            Sucess = true,
-            Data = allTasks
-        });
-    }
+    // [HttpGet]
+    // [Route("/api/v1/Tasks/SearchByConcluded")]
+    // [Authorize]
+    // public async Task<IActionResult> SearchBtConcluded([Required] bool concluded)
+    // {
+    //     List<TasksDTO> allTasks = await _taskService.SearchByConcluded(concluded, Guid.Parse(User.Identity.Name));
+    //     
+    //     return Ok(new ResultViewModel
+    //     {
+    //         Message = "Pesquisa realizada com sucesso.",
+    //         Sucess = true,
+    //         Data = allTasks
+    //     });
+    // }
 }

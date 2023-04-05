@@ -10,6 +10,6 @@ public interface ITaskService
     
     Task Remove(RemoveTaskDto removeTaskDto);
     Task<TasksDTO> Get(Guid id, Guid userId);
-    Task<List<TasksDTO>> SearchByConcluded(bool concluded, Guid user);
+    // Task<List<TasksDTO>> SearchByConcluded(bool concluded, Guid user);
     Task<List<TasksDTO>> SearchByUser(Guid id);
 }

@@ -110,31 +110,31 @@ public class TasksServices : ITaskService
         return _mapper.Map<TasksDTO>(taskExists);
     }
 
-    public async Task<List<TasksDTO>> SearchByConcluded(bool concluded, Guid userid)
-    {
-        try
-        {
-            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(userid);
-
-            if (tasksThisUser == null)
-            {
-                throw new DomainExceptions("Esse usuário não possui tasks.");
-            }
-
-            var taskExists = await _taskRepository.SearchByConcluded(concluded, userid);
-
-            if (taskExists == null)
-            {
-                throw new DomainExceptions("Nenhuma task foi concluida ainda.");
-            }
-
-            return _mapper.Map<List<TasksDTO>>(taskExists);
-        }
-        catch (DomainExceptions)
-        {
-            throw new DomainExceptions("Ocorreu algum erro, contate o suporte.");
-        }
-    }
+    // public async Task<List<TasksDTO>> SearchByConcluded(bool concluded, Guid userid)
+    // {
+    //     try
+    //     {
+    //         List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(userid);
+    //
+    //         if (tasksThisUser == null)
+    //         {
+    //             throw new DomainExceptions("Esse usuário não possui tasks.");
+    //         }
+    //
+    //         var taskExists = await _taskRepository.SearchByConcluded(concluded, userid);
+    //
+    //         if (taskExists == null)
+    //         {
+    //             throw new DomainExceptions("Nenhuma task foi concluida ainda.");
+    //         }
+    //
+    //         return _mapper.Map<List<TasksDTO>>(taskExists);
+    //     }
+    //     catch (DomainExceptions)
+    //     {
+    //         throw new DomainExceptions("Ocorreu algum erro, contate o suporte.");
+    //     }
+    // }
 
     public async Task<List<TasksDTO>> SearchByUser(Guid id)
     {
