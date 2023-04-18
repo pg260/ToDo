@@ -2,10 +2,8 @@ using AutoMapper;
 using Manager.Core.Exceptions;
 using Manager.Domain.Entities;
 using Manager.Infra.Interfaces;
-using Manager.Infra.Repositories;
 using Manager.Services.DTO.Tasks;
 using Manager.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Task = System.Threading.Tasks.Task;
 
 namespace Manager.Services.Services;
@@ -25,9 +23,9 @@ public class TasksServices : ITaskService
     {
         try
         {
-            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(tasksDto.UserId);
+            var allUsers = await Search(tasksDto.UserId, null);
             
-            foreach (var tasks in tasksThisUser)
+            foreach (var tasks in allUsers)
             {
                 if (tasks.Name == tasksDto.Name)
                 {
@@ -50,11 +48,7 @@ public class TasksServices : ITaskService
 
     public async Task<TasksDTO> Update(TasksDTO tasksDto)
     {
-        try
-        {
-            VerificandoTasksUsuario(tasksDto.UserId);
-
-            var taskExists = await _taskRepository.Get(tasksDto.Id, tasksDto.UserId);
+        var taskExists = await _taskRepository.Get(tasksDto.Id, tasksDto.UserId);
     
             if (taskExists == null)
             {
@@ -69,22 +63,15 @@ public class TasksServices : ITaskService
     
             var taskUpdated = await _taskRepository.Update(task);
             return _mapper.Map<TasksDTO>(taskUpdated);
-        }
-        catch (DomainExceptions)
-        {
-            throw new DomainExceptions("Veja se os dados estão digitados corretamente e tente novamente");
-        }
     }
 
     public async Task Remove(Guid userId, Guid id)
     {
         try
         {
-            VerificandoTasksUsuario(userId);
+            var allUsers = await VerificandoTasksUsuario(userId);
 
-            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(userId);
-        
-            foreach (var tasks in tasksThisUser)
+            foreach (var tasks in allUsers)
             {
                 if(tasks.Id == id)
                     await _taskRepository.Remove(tasks.Id);
@@ -99,9 +86,6 @@ public class TasksServices : ITaskService
 
     public async Task<TasksDTO> Get(Guid id, Guid userId)
     {
-
-        VerificandoTasksUsuario(userId);
-
         var taskExists = await _taskRepository.Get(id, userId);
 
         if (taskExists == null)
@@ -112,45 +96,15 @@ public class TasksServices : ITaskService
         return _mapper.Map<TasksDTO>(taskExists);
     }
 
-    // public async Task<List<TasksDTO>> SearchByConcluded(bool concluded, Guid userid)
-    // {
-    //     try
-    //     {
-    //         List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(userid);
-    //
-    //         if (tasksThisUser == null)
-    //         {
-    //             throw new DomainExceptions("Esse usuário não possui tasks.");
-    //         }
-    //
-    //         var taskExists = await _taskRepository.SearchByConcluded(concluded, userid);
-    //
-    //         if (taskExists == null)
-    //         {
-    //             throw new DomainExceptions("Nenhuma task foi concluida ainda.");
-    //         }
-    //
-    //         return _mapper.Map<List<TasksDTO>>(taskExists);
-    //     }
-    //     catch (DomainExceptions)
-    //     {
-    //         throw new DomainExceptions("Ocorreu algum erro, contate o suporte.");
-    //     }
-    // }
-
     public async Task<List<TasksDTO>> SearchByUser(Guid id)
     {
-        VerificandoTasksUsuario(id);
-
-        var allUsers = await _taskRepository.SearchByUser(id);
+        var allUsers = await VerificandoTasksUsuario(id);
 
         return _mapper.Map<List<TasksDTO>>(allUsers);
     }
 
     public async Task<List<TasksDTO>> Search(Guid id, SearchTask seachTaskDto)
     {
-        VerificandoTasksUsuario(id);
-
         var search = await _taskRepository.Search(id, seachTaskDto);
         
         if (search == null)
@@ -161,14 +115,16 @@ public class TasksServices : ITaskService
         return _mapper.Map<List<TasksDTO>>(search);
     }
 
-    public async void VerificandoTasksUsuario(Guid id)
+    public async Task<List<Domain.Entities.Task>> VerificandoTasksUsuario(Guid id)
     {
-        List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(id);
+        List<Domain.Entities.Task> tasksThisUser = await _taskRepository.Search(id, null);
 
         if (tasksThisUser == null)
         {
             throw new DomainExceptions("Esse usuário não possui tasks.");
         }
+
+        return tasksThisUser;
     }
 
     public Domain.Entities.Task VerificandoPropriedades(Domain.Entities.Task tasksDto, Domain.Entities.Task task)

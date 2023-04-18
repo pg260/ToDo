@@ -15,8 +15,7 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
     }
 
     private readonly ManagerContext _context;
-
-
+    
     public async Task<Task> Get(Guid id, Guid userId)
     {
         await using var context = new ManagerContext();
@@ -57,25 +56,7 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
         return true;
     }
 
-    public async Task<List<Task>> SearchByConcluded(bool concluded, Guid userid)
-    {
-        return await _context.Tasks
-            .Where(x => x.UserId == userid && x.Concluded == concluded)
-            .AsNoTracking()
-            .ToListAsync();
-    }
-
-    public async Task<List<Task>> SearchByUser(Guid userid)
-    {
-        await using var context = new ManagerContext();
-        
-        return await context.Tasks
-            .Where(x => x.UserId == userid)
-            .AsNoTracking()
-            .ToListAsync();
-    }
-
-    public async Task<List<Task>> Search(Guid id, SearchTask seachTaskDto)
+    public async Task<List<Task>> Search(Guid id, SearchTask? seachTaskDto)
     {
         await using var context = new ManagerContext();
 
@@ -83,17 +64,20 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
 
         query = query.Where(x => x.UserId == id);
 
-        if (seachTaskDto.Name != null)
-            query = query.Where(x => x.Name.Contains(seachTaskDto.Name));
+        if (seachTaskDto != null)
+        {
+            if (seachTaskDto.Name != null)
+                query = query.Where(x => x.Name.Contains(seachTaskDto.Name));
 
-        if (seachTaskDto.Description != null)
-            query = query.Where(x => x.Description.Contains(seachTaskDto.Description));
+            if (seachTaskDto.Description != null)
+                query = query.Where(x => x.Description.Contains(seachTaskDto.Description));
 
-        if (seachTaskDto.Concluded != null)
-            query = query.Where(x => x.Concluded == seachTaskDto.Concluded);
+            if (seachTaskDto.Concluded != null)
+                query = query.Where(x => x.Concluded == seachTaskDto.Concluded);
 
-        query = query.Skip((int)((seachTaskDto.PAtual - 1) * seachTaskDto.PTake))
-            .Take((int)seachTaskDto.PTake);
+            query = query.Skip((int)((seachTaskDto.PAtual - 1) * seachTaskDto.PTake))
+                .Take((int)seachTaskDto.PTake);
+        }
 
         return await query
             .AsNoTracking()

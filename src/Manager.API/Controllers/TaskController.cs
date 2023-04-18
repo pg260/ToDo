@@ -3,7 +3,6 @@ using AutoMapper;
 using DefaultNamespace;
 using Manager.API.ViewModels.TasksViewModel;
 using Manager.API.ViewModels.UserViewModels;
-using Manager.Core.Exceptions;
 using Manager.Domain.Entities;
 using Manager.Services.DTO.Tasks;
 using Manager.Services.Interfaces;
@@ -96,21 +95,6 @@ public class TaskController : ControllerBase
             });
     }
 
-    [HttpGet]
-    [Route("/api/v1/Tasks/GetAllTasks")]
-    [Authorize]
-    public async Task<IActionResult> GetAllTasks()
-    {
-        List<TasksDTO> allTasks = await _taskService.SearchByUser(Guid.Parse(User.Identity.Name));
-
-        return Ok(new ResultViewModel
-        {
-            Message = "Pesquisa realizada com sucesso.",
-            Sucess = true,
-            Data = allTasks
-        });
-    }
-    
     [HttpPut]
     [Route("/api/v1/Tasks/Search")]
     [Authorize]
@@ -127,19 +111,4 @@ public class TaskController : ControllerBase
             Data = allTasks
         });
     }
-
-    // [HttpGet]
-    // [Route("/api/v1/Tasks/SearchByConcluded")]
-    // [Authorize]
-    // public async Task<IActionResult> SearchBtConcluded([Required] bool concluded)
-    // {
-    //     List<TasksDTO> allTasks = await _taskService.SearchByConcluded(concluded, Guid.Parse(User.Identity.Name));
-    //     
-    //     return Ok(new ResultViewModel
-    //     {
-    //         Message = "Pesquisa realizada com sucesso.",
-    //         Sucess = true,
-    //         Data = allTasks
-    //     });
-    // }
 }
