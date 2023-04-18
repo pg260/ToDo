@@ -52,6 +52,7 @@ void AutoMapperDependenceInjection()
         cfg.CreateMap<CreateTaskViewModel, CreateTaskDto>().ReverseMap();
         cfg.CreateMap<UpdateTaskViewModel, TasksDTO>().ReverseMap();
         cfg.CreateMap<DeleteTaskViewModel, RemoveTaskDto>().ReverseMap();
+        cfg.CreateMap<SearchViewModel, SearchTask>().ReverseMap();
     });
     
     builder.Services.AddSingleton(autoMapperConfig.CreateMapper());

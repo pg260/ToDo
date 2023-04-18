@@ -1,10 +1,12 @@
 using AutoMapper;
 using Manager.Core.Exceptions;
+using Manager.Domain.Entities;
 using Manager.Infra.Interfaces;
 using Manager.Infra.Repositories;
 using Manager.Services.DTO.Tasks;
 using Manager.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Task = System.Threading.Tasks.Task;
 
 namespace Manager.Services.Services;
 
@@ -74,17 +76,17 @@ public class TasksServices : ITaskService
         }
     }
 
-    public async Task Remove(RemoveTaskDto removeTaskDto)
+    public async Task Remove(Guid userId, Guid id)
     {
         try
         {
-            VerificandoTasksUsuario(removeTaskDto.UserId);
+            VerificandoTasksUsuario(userId);
 
-            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(removeTaskDto.UserId);
+            List<Domain.Entities.Task> tasksThisUser = await _taskRepository.SearchByUser(userId);
         
             foreach (var tasks in tasksThisUser)
             {
-                if(tasks.Id == removeTaskDto.Id)
+                if(tasks.Id == id)
                     await _taskRepository.Remove(tasks.Id);
             
             }
@@ -143,6 +145,20 @@ public class TasksServices : ITaskService
         var allUsers = await _taskRepository.SearchByUser(id);
 
         return _mapper.Map<List<TasksDTO>>(allUsers);
+    }
+
+    public async Task<List<TasksDTO>> Search(Guid id, SearchTask seachTaskDto)
+    {
+        VerificandoTasksUsuario(id);
+
+        var search = await _taskRepository.Search(id, seachTaskDto);
+        
+        if (search == null)
+        {
+            throw new DomainExceptions("Não foi encontrado nenhum item.");
+        }
+
+        return _mapper.Map<List<TasksDTO>>(search);
     }
 
     public async void VerificandoTasksUsuario(Guid id)

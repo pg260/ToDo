@@ -1,3 +1,4 @@
+using Manager.Domain.Entities;
 using Task = Manager.Domain.Entities.Task;
 
 namespace Manager.Infra.Interfaces;
@@ -9,5 +10,7 @@ public interface ITaskRepository : IBaseRepository<Task>
     Task<bool> Remove(Guid id);
     Task<List<Task>> SearchByConcluded(bool concluded, Guid userid);
     Task<List<Task>> SearchByUser(Guid userid);
+    
+    Task<List<Task>> Search(Guid id, SearchTask searchTask);
 
 }

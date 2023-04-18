@@ -1,22 +1,3 @@
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Infra.deps.json
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Infra.runtimeconfig.json
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Infra.dll
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/ref/Manager.Infra.dll
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Infra.pdb
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Core.dll
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Domain.dll
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Domain.pdb
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Core.pdb
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.csproj.AssemblyReference.cache
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.GeneratedMSBuildEditorConfig.editorconfig
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.AssemblyInfoInputs.cache
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.AssemblyInfo.cs
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.csproj.CoreCompileInputs.cache
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.csproj.CopyComplete
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.dll
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/ref/Manager.Infra.dll
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.pdb
-/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.genruntimeconfig.cache
 C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Infra.deps.json
 C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Infra.runtimeconfig.json
 C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Infra.dll
@@ -36,3 +17,22 @@ C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/refint/Man
 C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.pdb
 C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.genruntimeconfig.cache
 C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/ref/Manager.Infra.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Core.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Domain.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Infra.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Domain.pdb
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Core.pdb
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Infra.pdb
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.csproj.AssemblyReference.cache
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.GeneratedMSBuildEditorConfig.editorconfig
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.AssemblyInfoInputs.cache
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.AssemblyInfo.cs
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.csproj.CoreCompileInputs.cache
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.csproj.CopyComplete
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/ref/Manager.Infra.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.pdb
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Infra.deps.json
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/Manager.Infra.runtimeconfig.json
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/bin/Debug/net6.0/ref/Manager.Infra.dll
+/home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Infra/obj/Debug/net6.0/Manager.Infra.genruntimeconfig.cache

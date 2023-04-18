@@ -10,6 +10,21 @@
 /home/pg/Área de Trabalho/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.dll
 /home/pg/Área de Trabalho/ToDo/src/Manager.Domain/obj/Debug/net6.0/ref/Manager.Domain.dll
 /home/pg/Área de Trabalho/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.pdb
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/bin/Debug/net6.0/Manager.Domain.deps.json
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/bin/Debug/net6.0/Manager.Domain.dll
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/bin/Debug/net6.0/Manager.Domain.pdb
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/bin/Debug/net6.0/Manager.Core.dll
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/bin/Debug/net6.0/Manager.Core.pdb
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.csproj.AssemblyReference.cache
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.AssemblyInfoInputs.cache
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.AssemblyInfo.cs
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.csproj.CoreCompileInputs.cache
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.csproj.CopyComplete
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.dll
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/refint/Manager.Domain.dll
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.pdb
+C:/Users/GUSTAVO/Desktop/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/ref/Manager.Domain.dll
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/bin/Debug/net6.0/Manager.Domain.deps.json
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/bin/Debug/net6.0/Manager.Domain.dll
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/bin/Debug/net6.0/ref/Manager.Domain.dll
@@ -25,18 +40,3 @@
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.dll
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/ref/Manager.Domain.dll
 /home/pg/Área de Trabalho/ToDo/ToDo/src/Manager.Domain/obj/Debug/net6.0/Manager.Domain.pdb
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\bin\Debug\net6.0\Manager.Domain.deps.json
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\bin\Debug\net6.0\Manager.Domain.dll
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\bin\Debug\net6.0\Manager.Domain.pdb
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\bin\Debug\net6.0\Manager.Core.dll
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\bin\Debug\net6.0\Manager.Core.pdb
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\obj\Debug\net6.0\Manager.Domain.csproj.AssemblyReference.cache
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\obj\Debug\net6.0\Manager.Domain.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\obj\Debug\net6.0\Manager.Domain.AssemblyInfoInputs.cache
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\obj\Debug\net6.0\Manager.Domain.AssemblyInfo.cs
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\obj\Debug\net6.0\Manager.Domain.csproj.CoreCompileInputs.cache
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\obj\Debug\net6.0\Manager.Domain.csproj.CopyComplete
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\obj\Debug\net6.0\Manager.Domain.dll
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\obj\Debug\net6.0\refint\Manager.Domain.dll
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\obj\Debug\net6.0\Manager.Domain.pdb
-C:\Users\GUSTAVO\Desktop\ToDo\ToDo\src\Manager.Domain\obj\Debug\net6.0\ref\Manager.Domain.dll

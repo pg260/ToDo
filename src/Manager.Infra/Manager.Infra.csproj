@@ -32,4 +32,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
   </ItemGroup>
 
+<!--  <ItemGroup>-->
+<!--    <Reference Include="Manager.Services">-->
+<!--      <HintPath>..\..\..\..\..\UserManager\Manager\src\Manager.Services\bin\Debug\net6.0\Manager.Services.dll</HintPath>-->
+<!--    </Reference>-->
+<!--  </ItemGroup>-->
+
 </Project>

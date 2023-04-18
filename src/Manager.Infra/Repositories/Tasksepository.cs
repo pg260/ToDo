@@ -1,4 +1,5 @@
 using Manager.Core.Exceptions;
+using Manager.Domain.Entities;
 using Manager.Infra.Context;
 using Manager.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -70,6 +71,31 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
         
         return await context.Tasks
             .Where(x => x.UserId == userid)
+            .AsNoTracking()
+            .ToListAsync();
+    }
+
+    public async Task<List<Task>> Search(Guid id, SearchTask seachTaskDto)
+    {
+        await using var context = new ManagerContext();
+
+        var query = context.Tasks.AsQueryable();
+
+        query = query.Where(x => x.UserId == id);
+
+        if (seachTaskDto.Name != null)
+            query = query.Where(x => x.Name.Contains(seachTaskDto.Name));
+
+        if (seachTaskDto.Description != null)
+            query = query.Where(x => x.Description.Contains(seachTaskDto.Description));
+
+        if (seachTaskDto.Concluded != null)
+            query = query.Where(x => x.Concluded == seachTaskDto.Concluded);
+
+        query = query.Skip((int)((seachTaskDto.PAtual - 1) * seachTaskDto.PTake))
+            .Take((int)seachTaskDto.PTake);
+
+        return await query
             .AsNoTracking()
             .ToListAsync();
     }

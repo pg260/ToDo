@@ -4,6 +4,7 @@ using DefaultNamespace;
 using Manager.API.ViewModels.TasksViewModel;
 using Manager.API.ViewModels.UserViewModels;
 using Manager.Core.Exceptions;
+using Manager.Domain.Entities;
 using Manager.Services.DTO.Tasks;
 using Manager.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -58,11 +59,9 @@ public class TaskController : ControllerBase
     [HttpDelete]
     [Route("/api/v1/Task/RemoveTask")]
     [Authorize]
-    public async Task<IActionResult> Remove([FromForm] DeleteTaskViewModel deleteTaskViewModel)
+    public async Task<IActionResult> Remove([Required] Guid id)
     {
-        var dto = _mapper.Map<RemoveTaskDto>(deleteTaskViewModel);
-            dto.UserId = Guid.Parse(User.Identity.Name);
-            await _taskService.Remove(dto);
+        await _taskService.Remove(Guid.Parse(User.Identity.Name), id);
 
             return Ok(new ResultViewModel
             {
@@ -103,6 +102,23 @@ public class TaskController : ControllerBase
     public async Task<IActionResult> GetAllTasks()
     {
         List<TasksDTO> allTasks = await _taskService.SearchByUser(Guid.Parse(User.Identity.Name));
+
+        return Ok(new ResultViewModel
+        {
+            Message = "Pesquisa realizada com sucesso.",
+            Sucess = true,
+            Data = allTasks
+        });
+    }
+    
+    [HttpPut]
+    [Route("/api/v1/Tasks/Search")]
+    [Authorize]
+    public async Task<IActionResult> Search([FromForm] SearchViewModel searchViewModel)
+    {
+        var searchDto = _mapper.Map<SearchTask>(searchViewModel);
+        
+        List<TasksDTO> allTasks = await _taskService.Search( Guid.Parse(User.Identity.Name), searchDto);
 
         return Ok(new ResultViewModel
         {
