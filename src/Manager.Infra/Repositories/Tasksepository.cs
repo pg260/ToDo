@@ -72,8 +72,46 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
             if (seachTaskDto.Description != null)
                 query = query.Where(x => x.Description.Contains(seachTaskDto.Description));
 
-            if (seachTaskDto.Concluded != null)
+            if (seachTaskDto.Concluded != null && (bool)seachTaskDto.Concluded)
                 query = query.Where(x => x.Concluded == seachTaskDto.Concluded);
+
+            if (seachTaskDto.OrderByA != null && seachTaskDto.OrderByZ != null)
+            {
+                if ((bool)seachTaskDto.OrderByA && (bool)seachTaskDto.OrderByZ)
+                    throw new DomainExceptions("Não podemos ordernar de A-Z e de Z-A ao mesmo tempo.");
+            }
+
+            if (seachTaskDto.OrderByA != null && (bool)seachTaskDto.OrderByA)
+            {
+                query = query.OrderBy((p => p.Name));
+            }
+
+            if (seachTaskDto.OrderByZ != null && (bool)seachTaskDto.OrderByZ)
+            {
+                query = query.OrderByDescending((p => p.Name));
+            }
+            
+            if (seachTaskDto.MaiorQue!= null && seachTaskDto.MenorQue != null)
+            {
+                if ((bool)seachTaskDto.MaiorQue && (bool)seachTaskDto.MenorQue)
+                    throw new DomainExceptions("Não podemos ordernar por esses parametros de data mesmo tempo.");
+            }
+            
+            if ((seachTaskDto.MaiorQue != null || seachTaskDto.MenorQue != null) && seachTaskDto.CreatedTime == null)
+                throw new DomainExceptions("Insira a data para podermos ordenar os dados.");
+            
+            if (seachTaskDto.MaiorQue != null && (bool)seachTaskDto.MaiorQue)
+            {
+                query = query.Where(x => x.CreatedAt >= seachTaskDto.CreatedTime);
+                query = query.OrderBy((p => p.CreatedAt));
+            }
+
+            if (seachTaskDto.MenorQue != null && (bool)seachTaskDto.MenorQue)
+            {
+                query = query.Where(x => x.CreatedAt <= seachTaskDto.CreatedTime);
+                query = query.OrderBy((p => p.CreatedAt));
+            }
+            
 
             query = query.Skip((int)((seachTaskDto.PAtual - 1) * seachTaskDto.PTake))
                 .Take((int)seachTaskDto.PTake);

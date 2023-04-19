@@ -12,6 +12,6 @@ public class UpdateTaskViewModel
     
     [MaxLength(200, ErrorMessage = "A descrição só pode ter no máximo 200 letras")]
     public string? Description { get; set; }
-    public bool Concluded { get; set; }
+    public bool? Concluded { get; set; }
     public DateTime? Deadline { get; set; }
 }

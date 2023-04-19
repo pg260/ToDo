@@ -95,12 +95,11 @@ public class TaskController : ControllerBase
             });
     }
 
-    [HttpPut]
-    [Route("/api/v1/Tasks/Search")]
+    [HttpGet("/api/v1/Tasks/Search")]
     [Authorize]
-    public async Task<IActionResult> Search([FromForm] SearchViewModel searchViewModel)
+    public async Task<IActionResult> Search([FromQuery] SearchViewModel dto)
     {
-        var searchDto = _mapper.Map<SearchTask>(searchViewModel);
+        var searchDto = _mapper.Map<SearchTask>(dto);
         
         List<TasksDTO> allTasks = await _taskService.Search( Guid.Parse(User.Identity.Name), searchDto);
 

@@ -13,4 +13,9 @@ public class SearchViewModel
     public bool? Concluded { get; set; }
     public int? PAtual { get; set; }
     public int? PTake { get; set; }
+    public bool? OrderByA { get; set; }
+    public bool? OrderByZ { get; set; }
+    public bool? MaiorQue { get; set; }
+    public bool? MenorQue { get; set; }
+    public DateTime? CreatedTime { get; set; }
 }

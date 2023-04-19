@@ -56,6 +56,9 @@ public class TasksServices : ITaskService
             }
             
             var task = _mapper.Map<Domain.Entities.Task>(tasksDto);
+            
+            if (task.Concluded == null)
+                task.Concluded = taskExists.Concluded;
 
             task = VerificandoPropriedades(taskExists, task);
 
