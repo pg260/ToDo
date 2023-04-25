@@ -100,8 +100,17 @@ public class TaskController : ControllerBase
     public async Task<IActionResult> Search([FromQuery] SearchViewModel dto)
     {
         var searchDto = _mapper.Map<SearchTask>(dto);
-        
-        List<TasksDTO> allTasks = await _taskService.Search( Guid.Parse(User.Identity.Name), searchDto);
+
+        List<TasksDTO> allTasks = new List<TasksDTO>();
+
+        if (User.IsInRole("MOD"))
+        {
+            allTasks = await _taskService.Search(null, searchDto);
+        }
+        else
+        {
+            allTasks = await _taskService.Search( Guid.Parse(User.Identity.Name), searchDto);   
+        }
 
         return Ok(new ResultViewModel
         {

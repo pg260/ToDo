@@ -55,5 +55,15 @@ public class UserValidator : AbstractValidator<User>
             
             .EmailAddress()
             .WithMessage("Email inválido");
+
+        RuleFor(x => x.Role)
+            .NotEmpty()
+            .WithMessage("O role não pode ser vazio")
+
+            .NotNull()
+            .WithMessage("O role não pode ser nulo")
+
+            .MaximumLength(15)
+            .WithMessage("O role deve ter no máximo 15 caracteres");
     }
 }

@@ -106,10 +106,19 @@ public class TasksServices : ITaskService
         return _mapper.Map<List<TasksDTO>>(allUsers);
     }
 
-    public async Task<List<TasksDTO>> Search(Guid id, SearchTask seachTaskDto)
+    public async Task<List<TasksDTO>> Search(Guid? id, SearchTask seachTaskDto)
     {
-        var search = await _taskRepository.Search(id, seachTaskDto);
+        List<Domain.Entities.Task> search = new List<Domain.Entities.Task>();
         
+        if(id != null)
+        {
+            search = await _taskRepository.Search((Guid)id, seachTaskDto);
+        }
+        else
+        {
+            search = await _taskRepository.Search(null, seachTaskDto);
+        }
+
         if (search == null)
         {
             throw new DomainExceptions("Não foi encontrado nenhum item.");
@@ -135,17 +144,23 @@ public class TasksServices : ITaskService
         task.CreatedAt = tasksDto.CreatedAt;
         task.UpdatedAt = DateTime.Now;
 
-        if (task.Concluded && !tasksDto.Concluded)
-            task.ConcludedAt = DateTime.Now;
-        
+        if (task.Concluded != null && tasksDto.Concluded != null)
+        {
+            if ((bool)task.Concluded && !(bool)tasksDto.Concluded)
+                task.ConcludedAt = DateTime.Now;
+            
+            if (task.ConcludedAt == null && (bool)task.Concluded)
+                task.ConcludedAt = tasksDto.ConcludedAt;
+
+            if (tasksDto.ConcludedAt != null && !(bool)task.Concluded)
+                task.ConcludedAt = null;
+        }
+
         if (task.Name == null)
             task.Name = tasksDto.Name;
 
         if (task.Description == null)
             task.Description = tasksDto.Description;
-
-        if (task.ConcludedAt == null && task.Concluded)
-            task.ConcludedAt = tasksDto.ConcludedAt;
 
         return task;
     }

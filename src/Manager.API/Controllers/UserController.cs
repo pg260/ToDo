@@ -67,9 +67,9 @@ public class UserController : ControllerBase
             });
     }
 
-        [HttpGet]
+    [HttpGet]
     [Route("/api/v1/Users/GetUser")]
-    [Authorize]
+    [Authorize(Roles = "MOD")]
     public async Task<IActionResult> GetUser()
     {
         var userDto = await _userService.Get(Guid.Parse(User.Identity.Name));
@@ -93,7 +93,7 @@ public class UserController : ControllerBase
 
     [HttpGet]
     [Route("/api/v1/Users/GetAllUsers")]
-    [Authorize]
+    [Authorize(Roles = "MOD")]
     public async Task<IActionResult> GetAllUser()
     {
 
@@ -109,7 +109,7 @@ public class UserController : ControllerBase
 
     [HttpGet]
     [Route("/api/v1/Users/SearchByName")]
-    [Authorize]
+    [Authorize(Roles = "MOD")]
     public async Task<IActionResult> SearchByName([Required] string name)
     {
         List<UserDTO> searchUsers = await _userService.SearchByName(name);
@@ -124,7 +124,7 @@ public class UserController : ControllerBase
 
     [HttpGet]
     [Route("/api/v1/Users/SearchByEmail")]
-    [Authorize]
+    [Authorize(Roles = "MOD")]
     public async Task<IActionResult> SearchByEmail([Required] string email)
     {
         List<UserDTO> searchUsers = await _userService.SearchByEmail(email);
@@ -139,7 +139,7 @@ public class UserController : ControllerBase
 
     [HttpGet]
     [Route("/api/v1/Users/GetByEmail")]
-    [Authorize]
+    [Authorize(Roles = "MOD")]
     public async Task<IActionResult> GetByEmail([Required] string email)
     {
         var searchUsers = await _userService.GetByEmail(email);

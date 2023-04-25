@@ -56,13 +56,14 @@ public class Tasksepository : BaseRepository<Task>, ITaskRepository
         return true;
     }
 
-    public async Task<List<Task>> Search(Guid id, SearchTask? seachTaskDto)
+    public async Task<List<Task>> Search(Guid? id, SearchTask? seachTaskDto)
     {
         await using var context = new ManagerContext();
 
         var query = context.Tasks.AsQueryable();
 
-        query = query.Where(x => x.UserId == id);
+        if(id != null)
+            query = query.Where(x => x.UserId == id);
 
         if (seachTaskDto != null)
         {

@@ -10,7 +10,7 @@ public class Task : Base
         
     }
     
-    public Task(Guid id, DateTime? updatedAt, string? name, string? description, Guid userId, DateTime? createdAt, bool concluded, DateTime? concludedAt, DateTime? deadline)
+    public Task(Guid id, DateTime? updatedAt, string? name, string? description, Guid userId, DateTime? createdAt, bool? concluded, DateTime? concludedAt, DateTime? deadline)
     {
         Id = id;
         Name = name;
@@ -27,7 +27,7 @@ public class Task : Base
     public string? Name { get; set; }
     public string? Description { get; set; }
     public Guid UserId { get; set; }
-    public bool Concluded { get; set; }
+    public bool? Concluded { get; set; }
     public DateTime? ConcludedAt { get; set; }
     public DateTime? Deadline { get; set; }
     public DateTime? CreatedAt { get; set; }

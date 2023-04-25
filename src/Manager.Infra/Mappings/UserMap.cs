@@ -16,6 +16,10 @@ public class UserMap : IEntityTypeConfiguration<User>
             .HasColumnName("Id")
             .HasColumnType("VARCHAR(36)");
 
+        builder.Property(x => x.Role)
+            .HasColumnName("Roles")
+            .HasColumnType("VARCHAR(15)");
+
         builder.Property(x => x.Name)
             .IsRequired()
             .HasMaxLength(60)
